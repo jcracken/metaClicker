@@ -18,7 +18,7 @@ public class ClickingWindow extends JFrame {
 	private JLabel counts;
 	private UpgradesGUI upgradeScreen;
 	private boolean isClosed;
-	private boolean upgradeCheck;
+	private boolean upgradeCheck;		//prevents GUI from making lots of upgrade buttons
 
 	private JMenuBar menuBar;
 	private JMenu fileMenu;
