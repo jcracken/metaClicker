@@ -98,13 +98,15 @@ public class ClickingWindow extends JFrame {
 				counts.setText(clicks.getCounter() + " clicks counted");
 				if (clicks.getCounter() >= 10 && upgradeCheck == false){
 					addUpgrades();
-					addPlayers();
+					
 					upgradeCheck = true;
 				}
 				
 			}
 		});
 		// panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		
+		addPlayers();
 		panel.add(clickme);
 		labelPanel.add(counts);
 	}
