@@ -2,76 +2,100 @@ package metaClickerPrototype;
 
 import java.awt.*;
 import javax.swing.*;
+
 import java.awt.event.*;
 
 public class ClickingWindow extends JFrame {
 
 	private Clicker clicks;
 	// private double clicks = 0;
+	private JFrame frame;
 	private JButton clickme;
 	private JButton upgrades;
-	private JButton players;
 	private JPanel panel;
 	private JPanel labelPanel;
-	private JPanel playerPanel;
 	private JPanel upgradePanel;
 	private JLabel counts;
 	private UpgradesGUI upgradeScreen;
-	private PlayersGUI playerScreen;
-	private boolean isClosed = false;
-	
+	private boolean isClosed;
+	private boolean upgradeCheck;
+
 	private JMenuBar menuBar;
 	private JMenu fileMenu;
 	private JMenuItem fileSave;
 	private JMenuItem fileLoad;
-	private JMenuItem fileExit;
 
 	public ClickingWindow() {
-
-		super("Meta Clicker: The Clickening");
 		
+		upgradeCheck = false;
+;
+
+		frame = new JFrame("Meta Clicker: The Clickening");
+
 		clicks = new Clicker();
 		clickme = new JButton("Click me");
 		upgrades = new JButton("Upgrades");
-		players = new JButton("Statistics");
 		panel = new JPanel();
 		labelPanel = new JPanel();
-		playerPanel = new JPanel();
 		upgradePanel = new JPanel();
+		
+		menuBar = new JMenuBar();
+		fileMenu = new JMenu("File");
+		fileSave = new JMenuItem("Save");
+		fileLoad = new JMenuItem("Load");
+		
+		menuBar = new JMenuBar();
+		fileMenu = new JMenu("File");
+		fileMenu.add(fileSave);
+		fileMenu.add(fileLoad);
+		menuBar.add(fileMenu);
+		frame.setJMenuBar(menuBar);
+		
+		frame.setSize(400, 300);
 
-		setSize(400, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		/*
+		 * this.addWindowListener(new WindowAdapter() {
+		 * 
+		 * @Override public void windowClosed(WindowEvent e) { isClosed = true;
+		 * } });
+		 */
+		
+		fileSave.addActionListener(new PanelListener());
+		fileLoad.addActionListener(new PanelListener());
 
 		buildPanel();
 
-		add(panel, BorderLayout.CENTER);
+		frame.add(panel, BorderLayout.CENTER);
 
-		setLayout(new GridLayout(3, 1));
+		frame.setLayout(new GridLayout(3, 1));
 
-		add(labelPanel, BorderLayout.CENTER);
+		frame.add(labelPanel, BorderLayout.CENTER);
 
-		add(playerPanel, BorderLayout.CENTER);
-		
-		setVisible(true);
+		// if(clicks.getCounter() > 10) addUpgrades();
 
+		frame.setVisible(true);
+
+		/*
+		 * while(!isClosed) { SwingUtilities.updateComponentTreeUI(this); }
+		 */
 	}
 
 	public void buildPanel() {
 		counts = new JLabel(clicks.getCounter() + " clicks counted");
+
 		clickme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clicks.click();
-				
 				counts.setText(clicks.getCounter() + " clicks counted");
-				if (clicks.getCounter() == 10) {
+				if (clicks.getCounter() >= 10 && upgradeCheck == false){
 					addUpgrades();
+					upgradeCheck = true;
 				}
-				addPlayers();
 			}
 		});
 		// panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		
 		panel.add(clickme);
 		labelPanel.add(counts);
 	}
@@ -86,32 +110,45 @@ public class ClickingWindow extends JFrame {
 			}
 		});
 		upgradePanel.add(upgrades);
-		this.add(upgradePanel);
-		
-		
+		frame.add(upgradePanel);
 	}
-	
-	public void addPlayers() {
-		players.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (isClosed == false) {
-					playerScreen = new PlayersGUI();
-					isClosed = true;
-				}
-			}
-		});
-		playerPanel.add(players);
-		this.add(playerPanel);
-		
-		
-	}
-	
-	private class PanelListener implements ActionListener{
+
+	private class PanelListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
+			JMenuItem source = (JMenuItem) (e.getSource());
+			if (source.equals(fileSave))
+				handleFileSave();
+			else if (source.equals(fileLoad))
+				handleFileLoad();
+
 		}
 		
+		private void handleFileSave() {
+			if (clicks != null) {
+				Driver.saveGame(clicks);
+			} else {
+				JOptionPane.showMessageDialog(null, "No clicker", "Error", JOptionPane.PLAIN_MESSAGE);
+			}
+			
+		}
+
+		private void handleFileLoad() {
+			clicks = Driver.loadGame();
+			counts.setText(clicks.getCounter() + " clicks counted");
+			if (clicks.getCounter() >= 10 && upgradeCheck == false){
+				addUpgrades();
+				upgradeCheck = true;
+			}
+		}
+
+	}
+	
+	private void setClicks(Clicker click){
+		clicks = click;
+	}
+	
+	private Clicker getClicks(){
+		return clicks;
 	}
 }
