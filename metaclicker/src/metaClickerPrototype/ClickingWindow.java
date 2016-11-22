@@ -20,7 +20,8 @@ public class ClickingWindow extends JFrame {
 	private JLabel counts;
 	private UpgradesGUI upgradeScreen;
 	private PlayersGUI playerScreen;
-	private boolean isClosed;
+	private boolean isClosedUpgrades;
+	private boolean isClosedPlayers;
 	private boolean upgradeCheck; // prevents GUI from making lots of upgrade
 									// buttons
 
@@ -32,7 +33,8 @@ public class ClickingWindow extends JFrame {
 	public ClickingWindow() {
 
 		upgradeCheck = false;
-		;
+		isClosedUpgrades = false;
+		isClosedUpgrades = false;
 
 		frame = new JFrame("Meta Clicker: The Clickening");
 
@@ -99,14 +101,14 @@ public class ClickingWindow extends JFrame {
 				counts.setText(clicks.getCounter() + " clicks counted");
 				if (clicks.getCounter() >= 10 && upgradeCheck == false) {
 					addUpgrades();
-					
+
 					upgradeCheck = true;
 				}
 
 			}
 		});
 		// panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		
+
 		addPlayers();
 		panel.add(clickme);
 		labelPanel.add(counts);
@@ -115,10 +117,7 @@ public class ClickingWindow extends JFrame {
 	public void addUpgrades() {
 		upgrades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isClosed == false) {
-					upgradeScreen = new UpgradesGUI();
-					isClosed = true;
-				}
+				upgradeScreen = new UpgradesGUI();
 			}
 		});
 		upgradePanel.add(upgrades);
@@ -128,10 +127,7 @@ public class ClickingWindow extends JFrame {
 	public void addPlayers() {
 		players.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isClosed == false) {
-					playerScreen = new PlayersGUI();
-					isClosed = true;
-				}
+				playerScreen = new PlayersGUI();
 			}
 		});
 		playerPanel.add(players);
