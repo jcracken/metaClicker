@@ -10,11 +10,14 @@ public class ClickingWindow extends JFrame {
 	// private double clicks = 0;
 	private JButton clickme;
 	private JButton upgrades;
+	private JButton players;
 	private JPanel panel;
 	private JPanel labelPanel;
+	private JPanel playerPanel;
 	private JPanel upgradePanel;
 	private JLabel counts;
 	private UpgradesGUI upgradeScreen;
+	private PlayersGUI playerScreen;
 	private boolean isClosed = false;
 	
 	private JMenuBar menuBar;
@@ -30,8 +33,10 @@ public class ClickingWindow extends JFrame {
 		clicks = new Clicker();
 		clickme = new JButton("Click me");
 		upgrades = new JButton("Upgrades");
+		players = new JButton("Statistics");
 		panel = new JPanel();
 		labelPanel = new JPanel();
+		playerPanel = new JPanel();
 		upgradePanel = new JPanel();
 
 		setSize(400, 300);
@@ -46,6 +51,8 @@ public class ClickingWindow extends JFrame {
 
 		add(labelPanel, BorderLayout.CENTER);
 
+		add(playerPanel, BorderLayout.CENTER);
+		
 		setVisible(true);
 
 	}
@@ -55,12 +62,16 @@ public class ClickingWindow extends JFrame {
 		clickme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clicks.click();
+				
 				counts.setText(clicks.getCounter() + " clicks counted");
-				if (clicks.getCounter() == 10)
+				if (clicks.getCounter() == 10) {
 					addUpgrades();
+				}
+				addPlayers();
 			}
 		});
 		// panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		
 		panel.add(clickme);
 		labelPanel.add(counts);
 	}
@@ -76,6 +87,23 @@ public class ClickingWindow extends JFrame {
 		});
 		upgradePanel.add(upgrades);
 		this.add(upgradePanel);
+		
+		
+	}
+	
+	public void addPlayers() {
+		players.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isClosed == false) {
+					playerScreen = new PlayersGUI();
+					isClosed = true;
+				}
+			}
+		});
+		playerPanel.add(players);
+		this.add(playerPanel);
+		
+		
 	}
 	
 	private class PanelListener implements ActionListener{
