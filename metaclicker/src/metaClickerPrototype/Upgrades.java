@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class Upgrades extends JFrame{
 	
 	public Upgrades() {
-		super("upgrades");
+		super("Upgrades");
 		
 		setSize(800, 600);
 		
