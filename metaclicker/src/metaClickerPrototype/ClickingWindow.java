@@ -79,7 +79,7 @@ public class ClickingWindow extends JFrame {
 
 		frame.add(labelPanel);
 
-		frame.add(playerPanel);
+		frame.add(playerPanel, BorderLayout.CENTER);
 		// if(clicks.getCounter() > 10) addUpgrades();
 
 		frame.setVisible(true);
