@@ -14,7 +14,7 @@ public class ClickingWindow extends JFrame {
 	private JPanel labelPanel;
 	private JPanel upgradePanel;
 	private JLabel counts;
-	private Upgrades upgradeScreen;
+	private UpgradesGUI upgradeScreen;
 	private boolean isClosed = false;
 	
 	private JMenuBar menuBar;
@@ -69,7 +69,7 @@ public class ClickingWindow extends JFrame {
 		upgrades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (isClosed == false) {
-					upgradeScreen = new Upgrades();
+					upgradeScreen = new UpgradesGUI();
 					isClosed = true;
 				}
 			}

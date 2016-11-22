@@ -4,9 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Upgrades extends JFrame{
+public class UpgradesGUI extends JFrame{
 	
-	public Upgrades() {
+	public UpgradesGUI() {
 		super("Upgrades");
 		
 		setSize(800, 600);
