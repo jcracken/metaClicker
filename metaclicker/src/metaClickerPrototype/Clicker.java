@@ -22,6 +22,7 @@ public class Clicker extends JFrame {
 	public static void main(String[] args) 
 	{
 		ClickingWindow electionrigger = new ClickingWindow();
+		//lsjdafljashkdfaf
 	}
 
 }
