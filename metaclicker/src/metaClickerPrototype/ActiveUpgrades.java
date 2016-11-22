@@ -1,10 +1,10 @@
 package metaClickerPrototype;
 
-public class activeUpgrades extends Upgrades {
+public class ActiveUpgrades extends Upgrades {
 	
 	public double clickMultiplier;
 	
-	public activeUpgrades() {
+	public ActiveUpgrades() {
 		clickMultiplier = 1.0;
 		isActive = true;
 		isPassive = false;

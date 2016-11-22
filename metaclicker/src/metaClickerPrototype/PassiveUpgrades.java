@@ -1,10 +1,10 @@
 package metaClickerPrototype;
 
-public class passiveUpgrades extends Upgrades{
+public class PassiveUpgrades extends Upgrades{
 	
 	public double clicksPerSecond;
 	
-	public passiveUpgrades() {
+	public PassiveUpgrades() {
 		clicksPerSecond = 1.0;
 		isActive = false;
 		isPassive = true;
