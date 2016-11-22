@@ -11,7 +11,7 @@ public class Upgrades extends JFrame{
 		
 		setSize(800, 600);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		setVisible(true);
 	}
