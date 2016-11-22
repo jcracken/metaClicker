@@ -119,7 +119,7 @@ public class ClickingWindow extends JFrame {
 				}
 			}
 		});
-		upgradePanel.add(upgrades);
+		upgradePanel.add(upgrades); //
 		frame.add(upgradePanel);
 	}
 	
