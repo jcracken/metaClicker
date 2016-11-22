@@ -13,5 +13,4 @@ public class PassiveUpgrades extends Upgrades{
 	public void setCPS(double CPS) {
 		clicksPerSecond = CPS;
 	}
-
 }
