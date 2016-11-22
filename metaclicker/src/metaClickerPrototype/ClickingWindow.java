@@ -20,8 +20,8 @@ public class ClickingWindow extends JFrame {
 	private JLabel counts;
 	private UpgradesGUI upgradeScreen;
 	private PlayersGUI playerScreen;
-	private boolean isClosedUpgrades;
-	private boolean isClosedPlayers;
+	private boolean isClosedUpgrades = false;
+	private boolean isClosedPlayers = false;
 	private boolean upgradeCheck; // prevents GUI from making lots of upgrade
 									// buttons
 
@@ -117,7 +117,10 @@ public class ClickingWindow extends JFrame {
 	public void addUpgrades() {
 		upgrades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				upgradeScreen = new UpgradesGUI();
+				if (isClosedUpgrades == false) {
+					upgradeScreen = new UpgradesGUI();
+					isClosedUpgrades = true;
+				}
 			}
 		});
 		upgradePanel.add(upgrades);
@@ -127,7 +130,10 @@ public class ClickingWindow extends JFrame {
 	public void addPlayers() {
 		players.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				playerScreen = new PlayersGUI();
+				if (isClosedPlayers == false) {
+					playerScreen = new PlayersGUI();
+					isClosedPlayers = true;
+				}
 			}
 		});
 		playerPanel.add(players);
