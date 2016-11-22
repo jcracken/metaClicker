@@ -127,7 +127,6 @@ public class ClickingWindow extends JFrame {
 		players.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					playerScreen = new PlayersGUI();
-				}
 			}
 		});
 		playerPanel.add(players);
