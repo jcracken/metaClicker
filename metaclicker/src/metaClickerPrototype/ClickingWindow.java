@@ -11,12 +11,15 @@ public class ClickingWindow extends JFrame {
 	// private double clicks = 0;
 	private JFrame frame;
 	private JButton clickme;
+	private JButton players;
 	private JButton upgrades;
 	private JPanel panel;
 	private JPanel labelPanel;
+	private JPanel playerPanel;
 	private JPanel upgradePanel;
 	private JLabel counts;
 	private UpgradesGUI upgradeScreen;
+	private PlayersGUI playerScreen;
 	private boolean isClosed;
 	private boolean upgradeCheck;		//prevents GUI from making lots of upgrade buttons
 
@@ -35,8 +38,10 @@ public class ClickingWindow extends JFrame {
 		clicks = new Clicker();
 		clickme = new JButton("Click me");
 		upgrades = new JButton("Upgrades");
+		players = new JButton("Statistics");
 		panel = new JPanel();
 		labelPanel = new JPanel();
+		playerPanel = new JPanel();
 		upgradePanel = new JPanel();
 		
 		menuBar = new JMenuBar();
@@ -69,10 +74,11 @@ public class ClickingWindow extends JFrame {
 
 		frame.add(panel, BorderLayout.CENTER);
 
-		frame.setLayout(new GridLayout(3, 1));
+		frame.setLayout(new GridLayout(4, 1));
 
 		frame.add(labelPanel, BorderLayout.CENTER);
 
+		frame.add(playerPanel);
 		// if(clicks.getCounter() > 10) addUpgrades();
 
 		frame.setVisible(true);
@@ -88,11 +94,14 @@ public class ClickingWindow extends JFrame {
 		clickme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clicks.click();
+				
 				counts.setText(clicks.getCounter() + " clicks counted");
 				if (clicks.getCounter() >= 10 && upgradeCheck == false){
 					addUpgrades();
+					addPlayers();
 					upgradeCheck = true;
 				}
+				
 			}
 		});
 		// panel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -112,6 +121,19 @@ public class ClickingWindow extends JFrame {
 		upgradePanel.add(upgrades);
 		frame.add(upgradePanel);
 	}
+	
+	public void addPlayers() {
+		players.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isClosed == false) {
+					playerScreen = new PlayersGUI();
+					isClosed = true;
+				}
+			}
+		});
+		playerPanel.add(players);
+		this.add(playerPanel);	
+ 	}
 
 	private class PanelListener implements ActionListener {
 
