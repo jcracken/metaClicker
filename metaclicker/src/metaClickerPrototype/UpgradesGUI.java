@@ -23,7 +23,7 @@ public class UpgradesGUI extends JFrame{
 		
 		setSize(800, 600);
 		
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setVisible(true);
 		
