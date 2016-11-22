@@ -23,7 +23,7 @@ public class PlayersGUI extends JFrame{
 		this.add(playersPanel);
 		setSize(800, 600);
 		
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setVisible(true);
 		
 	}
