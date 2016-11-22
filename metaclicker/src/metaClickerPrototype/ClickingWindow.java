@@ -20,10 +20,8 @@ public class ClickingWindow extends JFrame {
 	private JLabel counts;
 	private UpgradesGUI upgradeScreen;
 	private PlayersGUI playerScreen;
-	private boolean isClosedUpgrades;
-	private boolean isClosedPlayers;
-	private boolean upgradeCheck; // prevents GUI from making lots of upgrade
-									// buttons
+	private boolean isClosed;
+	private boolean upgradeCheck;		//prevents GUI from making lots of upgrade buttons
 
 	private JMenuBar menuBar;
 	private JMenu fileMenu;
@@ -31,10 +29,9 @@ public class ClickingWindow extends JFrame {
 	private JMenuItem fileLoad;
 
 	public ClickingWindow() {
-
+		
 		upgradeCheck = false;
-		isClosedUpgrades = false;
-		isClosedUpgrades = false;
+;
 
 		frame = new JFrame("Meta Clicker: The Clickening");
 
@@ -46,19 +43,19 @@ public class ClickingWindow extends JFrame {
 		labelPanel = new JPanel();
 		playerPanel = new JPanel();
 		upgradePanel = new JPanel();
-
+		
 		menuBar = new JMenuBar();
 		fileMenu = new JMenu("File");
 		fileSave = new JMenuItem("Save");
 		fileLoad = new JMenuItem("Load");
-
+		
 		menuBar = new JMenuBar();
 		fileMenu = new JMenu("File");
 		fileMenu.add(fileSave);
 		fileMenu.add(fileLoad);
 		menuBar.add(fileMenu);
 		frame.setJMenuBar(menuBar);
-
+		
 		frame.setSize(400, 300);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,17 +66,17 @@ public class ClickingWindow extends JFrame {
 		 * @Override public void windowClosed(WindowEvent e) { isClosed = true;
 		 * } });
 		 */
-
+		
 		fileSave.addActionListener(new PanelListener());
 		fileLoad.addActionListener(new PanelListener());
 
 		buildPanel();
 
-		frame.add(panel);
+		frame.add(panel, BorderLayout.CENTER);
 
 		frame.setLayout(new GridLayout(4, 1));
 
-		frame.add(labelPanel);
+		frame.add(labelPanel, BorderLayout.CENTER);
 
 		frame.add(playerPanel, BorderLayout.CENTER);
 		// if(clicks.getCounter() > 10) addUpgrades();
@@ -97,18 +94,17 @@ public class ClickingWindow extends JFrame {
 		clickme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clicks.click();
-
+				
 				counts.setText(clicks.getCounter() + " clicks counted");
-				if (clicks.getCounter() >= 10 && upgradeCheck == false) {
+				if (clicks.getCounter() >= 10 && upgradeCheck == false){
 					addUpgrades();
-
+					
 					upgradeCheck = true;
 				}
-
+				
 			}
 		});
 		// panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-
 		addPlayers();
 		panel.add(clickme);
 		labelPanel.add(counts);
@@ -117,22 +113,26 @@ public class ClickingWindow extends JFrame {
 	public void addUpgrades() {
 		upgrades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				upgradeScreen = new UpgradesGUI();
+				if (isClosed == false) {
+					upgradeScreen = new UpgradesGUI();
+					isClosed = true;
+				}
 			}
 		});
 		upgradePanel.add(upgrades);
 		frame.add(upgradePanel);
 	}
-
+	
 	public void addPlayers() {
 		players.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				playerScreen = new PlayersGUI();
+					playerScreen = new PlayersGUI();
+				}
 			}
 		});
 		playerPanel.add(players);
-		this.add(playerPanel);
-	}
+		this.add(playerPanel);	
+ 	}
 
 	private class PanelListener implements ActionListener {
 
@@ -144,32 +144,32 @@ public class ClickingWindow extends JFrame {
 				handleFileLoad();
 
 		}
-
+		
 		private void handleFileSave() {
 			if (clicks != null) {
 				Driver.saveGame(clicks);
 			} else {
 				JOptionPane.showMessageDialog(null, "No clicker", "Error", JOptionPane.PLAIN_MESSAGE);
 			}
-
+			
 		}
 
 		private void handleFileLoad() {
 			clicks = Driver.loadGame();
 			counts.setText(clicks.getCounter() + " clicks counted");
-			if (clicks.getCounter() >= 10 && upgradeCheck == false) {
+			if (clicks.getCounter() >= 10 && upgradeCheck == false){
 				addUpgrades();
 				upgradeCheck = true;
 			}
 		}
 
 	}
-
-	private void setClicks(Clicker click) {
+	
+	private void setClicks(Clicker click){
 		clicks = click;
 	}
-
-	private Clicker getClicks() {
+	
+	private Clicker getClicks(){
 		return clicks;
 	}
 }
