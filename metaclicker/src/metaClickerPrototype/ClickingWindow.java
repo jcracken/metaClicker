@@ -127,10 +127,7 @@ public class ClickingWindow extends JFrame {
 	public void addPlayers() {
 		players.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isClosed == false) {
-					playerScreen = new PlayersGUI();
-					isClosed = true;
-				}
+				playerScreen = new PlayersGUI();
 			}
 		});
 		playerPanel.add(players);
