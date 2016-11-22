@@ -38,13 +38,6 @@ public class ClickingWindow extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		/*
-		 * this.addWindowListener(new WindowAdapter() {
-		 * 
-		 * @Override public void windowClosed(WindowEvent e) { isClosed = true;
-		 * } });
-		 */
-
 		buildPanel();
 
 		add(panel, BorderLayout.CENTER);
@@ -53,13 +46,8 @@ public class ClickingWindow extends JFrame {
 
 		add(labelPanel, BorderLayout.CENTER);
 
-		// if(clicks.getCounter() > 10) addUpgrades();
-
 		setVisible(true);
 
-		/*
-		 * while(!isClosed) { SwingUtilities.updateComponentTreeUI(this); }
-		 */
 	}
 
 	public void buildPanel() {
