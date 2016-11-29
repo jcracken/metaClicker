@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 public class ClickingWindow extends JFrame {
 
-	private Clicker clicks;
+	protected Clicker clicks;
 	// private double clicks = 0;
 	private JFrame frame;
 	private JButton clickme;

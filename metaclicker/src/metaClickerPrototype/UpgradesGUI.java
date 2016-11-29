@@ -67,32 +67,32 @@ public class UpgradesGUI extends JFrame{
 		
 		passive1 = new PassiveUpgrades();
 		passive1.setCost(15);
-		passive1.setDesc("Temp description");
-		passive1.setName("Upgrade 6");
+		passive1.setDesc("You used your knowledge in computer programming to set up a shoddy auto clicker.");
+		passive1.setName("Auto-Clicker");
 		passive1.setCPS(1);
 		
 		passive2 = new PassiveUpgrades();
 		passive2.setCost(25);
-		passive2.setDesc("Temp description");
-		passive2.setName("Upgrade 7");
+		passive2.setDesc("You properly understand coding syntax and create a second program to optimize");
+		passive2.setName("Optimizer");
 		passive2.setCPS(2);
 		
 		passive3 = new PassiveUpgrades();
 		passive3.setCost(35);
-		passive3.setDesc("Temp description");
-		passive3.setName("Upgrade 8");
+		passive3.setDesc("You decide this game sucks and cheat by modifying game files to run multiple instances");
+		passive3.setName("Clone");
 		passive3.setCPS(3);
 		
 		passive4 = new PassiveUpgrades();
 		passive4.setCost(45);
-		passive4.setDesc("Temp description");
-		passive4.setName("Upgrade 9");
+		passive4.setDesc("You cheat by hiring a bunch of monkeys to click for you");
+		passive4.setName("Monkeys");
 		passive4.setCPS(4);
 		
 		passive5 = new PassiveUpgrades();
 		passive5.setCost(55);
-		passive5.setDesc("Temp description");
-		passive5.setName("Upgrade 10");
+		passive5.setDesc("Harambe, our lord and savior, felt insulted that you went after his kin, therefore he took over the whole operation.");
+		passive5.setName("Good ol' Harambe");
 		passive5.setCPS(5);
 		
 	}
