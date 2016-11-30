@@ -277,8 +277,12 @@ public class ClickingWindow extends JFrame {
 		firstUpgradeButton = new JButton("10 Clicks");
 		firstUpgradeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				clicks.removeClicks(10);
-				firstUpgradeButton.setVisible(false);
+					if (clicks.removeClicks(10) == false)
+						JOptionPane.showMessageDialog(null, "You don't have the money, you piece of trash. Go fuck yourself", "Error", JOptionPane.ERROR_MESSAGE);
+					else {
+						firstUpgradeButton.setVisible(false);
+						clicks.setClickRate(2);
+					}
 				}
 			});
 		firstUpgrade.add(firstUpgradeTitle);

@@ -38,7 +38,7 @@ public class Clicker extends JFrame {
 	}
 	
 	public boolean removeClicks(int num) {
-		if (counter > num) {
+		if (counter >= num) {
 			counter = counter - num;
 			return true;
 		}
