@@ -50,7 +50,6 @@ public class ClickingWindow extends JFrame {
 	public ClickingWindow() {
 		
 		upgradeCheck = false;
-;
 
 		frame = new JFrame("Meta Clicker: The Clickening");
 
@@ -106,8 +105,8 @@ public class ClickingWindow extends JFrame {
 		 * while(!isClosed) { SwingUtilities.updateComponentTreeUI(this); }
 		 */
 		active1 = new ActiveUpgrades();
-		active1.setName("Upgrade 1");
-		active1.setDesc("Temp description");
+		active1.setName("Click Multiplier");
+		active1.setDesc("You modified the button to increment by two.");
 		active1.setCost(10);
 		active1.setMult(1.5);
 		
@@ -262,6 +261,7 @@ public class ClickingWindow extends JFrame {
 		firstUpgradeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clicks.removeClicks(10);
+				firstUpgradeButton.setVisible(false);
 				}
 			});
 		firstUpgrade.add(firstUpgradeTitle);
