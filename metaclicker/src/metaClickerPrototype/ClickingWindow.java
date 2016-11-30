@@ -53,7 +53,6 @@ public class ClickingWindow extends JFrame {
 	public ClickingWindow() {
 		
 		upgradeCheck = false;
-;
 
 		frame = new JFrame("Meta Clicker: The Clickening");
 
@@ -93,10 +92,11 @@ public class ClickingWindow extends JFrame {
 		fileLoad.addActionListener(new PanelListener());
 
 		buildPanel();
-
+		frame.setLayout(new GridLayout(2,3));
+		
 		frame.add(panel, BorderLayout.CENTER);
 
-		frame.setLayout(new GridLayout(5,1));
+		
 
 		frame.add(labelPanel, BorderLayout.CENTER);
 
@@ -108,65 +108,7 @@ public class ClickingWindow extends JFrame {
 		/*
 		 * while(!isClosed) { SwingUtilities.updateComponentTreeUI(this); }
 		 */
-		active1 = new ActiveUpgrades();
-		active1.setName("Upgrade 1");
-		active1.setDesc("Temp description");
-		active1.setCost(10);
-		active1.setMult(1.5);
-		
-		active2 = new ActiveUpgrades();
-		active2.setName("Upgrade 2");
-		active2.setDesc("Temp description");
-		active2.setCost(20);
-		active2.setMult(2.0);
-		
-		active3 = new ActiveUpgrades();
-		active3.setName("Upgrade 3");
-		active3.setDesc("Temp description");
-		active3.setCost(30);
-		active3.setMult(3.0);
-		
-		active4 = new ActiveUpgrades();
-		active4.setName("Upgrade 4");
-		active4.setDesc("Temp description");
-		active4.setCost(40);
-		active4.setMult(4.0);
-		
-		active5 = new ActiveUpgrades();
-		active5.setName("Upgrade 5");
-		active5.setDesc("Temp description");
-		active5.setCost(50);
-		active5.setMult(5.0);
-		
-		passive1 = new PassiveUpgrades();
-		passive1.setCost(15);
-		passive1.setDesc("You used your knowledge in computer programming to set up a shoddy auto clicker.");
-		passive1.setName("Auto-Clicker");
-		passive1.setCPS(1);
-		
-		passive2 = new PassiveUpgrades();
-		passive2.setCost(25);
-		passive2.setDesc("You properly understand coding syntax and create a second program to optimize");
-		passive2.setName("Optimizer");
-		passive2.setCPS(2);
-		
-		passive3 = new PassiveUpgrades();
-		passive3.setCost(35);
-		passive3.setDesc("You decide this game sucks and cheat by modifying game files to run multiple instances");
-		passive3.setName("Clone");
-		passive3.setCPS(3);
-		
-		passive4 = new PassiveUpgrades();
-		passive4.setCost(45);
-		passive4.setDesc("You cheat by hiring a bunch of monkeys to click for you");
-		passive4.setName("Monkeys");
-		passive4.setCPS(4);
-		
-		passive5 = new PassiveUpgrades();
-		passive5.setCost(55);
-		passive5.setDesc("Harambe, our lord and savior, felt insulted that you went after his kin, therefore he took over the whole operation.");
-		passive5.setName("Good ol' Harambe");
-		passive5.setCPS(5);
+		initializeUpgrades();
 		createUpgradesPanel();
 	}
 
@@ -256,6 +198,68 @@ public class ClickingWindow extends JFrame {
 		return clicks;
 	}
 	
+	private void initializeUpgrades() {
+		active1 = new ActiveUpgrades();
+		active1.setName("Click Multiplier");
+		active1.setDesc("You modified the button to increment by 2.");
+		active1.setCost(10);
+		active1.setMult(2);
+		
+		active2 = new ActiveUpgrades();
+		active2.setName("Click Multiplier 2");
+		active2.setDesc("You modified the button to increment by 4.");
+		active2.setCost(100);
+		active2.setMult(4);
+		
+		active3 = new ActiveUpgrades();
+		active3.setName("Click Multiplier 3");
+		active3.setDesc("You modified the button to increment by 8.");
+		active3.setCost(1000);
+		active3.setMult(8);
+		
+		active4 = new ActiveUpgrades();
+		active4.setName("Click Multiplier 4");
+		active4.setDesc("You modified the button to increment by 16.");
+		active4.setCost(10000);
+		active4.setMult(16);
+		
+		active5 = new ActiveUpgrades();
+		active5.setName("Click Multiplier 5");
+		active5.setDesc("You modified the button to increment by 32.");
+		active5.setCost(100000);
+		active5.setMult(32);
+		
+		passive1 = new PassiveUpgrades();
+		passive1.setCost(15);
+		passive1.setDesc("You used your knowledge in computer programming to set up a shoddy auto clicker.");
+		passive1.setName("Auto-Clicker");
+		passive1.setCPS(1);
+		
+		passive2 = new PassiveUpgrades();
+		passive2.setCost(25);
+		passive2.setDesc("You properly understand coding syntax and create a second program to optimize");
+		passive2.setName("Optimizer");
+		passive2.setCPS(2);
+		
+		passive3 = new PassiveUpgrades();
+		passive3.setCost(35);
+		passive3.setDesc("You decide this game sucks and cheat by modifying game files to run multiple instances");
+		passive3.setName("Clone");
+		passive3.setCPS(3);
+		
+		passive4 = new PassiveUpgrades();
+		passive4.setCost(45);
+		passive4.setDesc("You cheat by hiring a bunch of monkeys to click for you");
+		passive4.setName("Monkeys");
+		passive4.setCPS(4);
+		
+		passive5 = new PassiveUpgrades();
+		passive5.setCost(55);
+		passive5.setDesc("Harambe, our lord and savior, felt insulted that you went after his kin, therefore he took over the whole operation.");
+		passive5.setName("Good ol' Harambe");
+		passive5.setCPS(5);
+	}
+	
 	public void createUpgradesPanel() {
 		//in which we draw the ui for purchasing upgrades
 		firstUpgradeTitle = new JLabel(active1.upgradeName);
@@ -265,6 +269,7 @@ public class ClickingWindow extends JFrame {
 		firstUpgradeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clicks.removeClicks(10);
+				firstUpgradeButton.setVisible(false);
 				}
 			});
 		firstUpgrade.add(firstUpgradeTitle);
