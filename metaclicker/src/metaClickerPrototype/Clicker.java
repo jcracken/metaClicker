@@ -7,20 +7,26 @@ import java.io.*;
 public class Clicker extends JFrame {
 
 	private double counter;
+	private double countRate;
 	private double lifetimeCounter;
 
 	public Clicker() {
 		counter = 0;
 		lifetimeCounter = 0;
+		countRate = 1;
 	}
 
 	public void click() {
-		counter++;
+		counter = counter + countRate;
 		lifetimeCounter++;
 	}
 
 	public double getCounter() {
 		return counter;
+	}
+	
+	public void setClickRate(double cr) {
+		countRate = cr;
 	}
 	
 	public double getLifetimeCounter() {
