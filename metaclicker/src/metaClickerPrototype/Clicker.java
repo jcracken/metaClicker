@@ -26,6 +26,10 @@ public class Clicker extends JFrame {
 	public double getLifetimeCounter() {
 		return this.lifetimeCounter;
 	}
+	
+	public void removeClicks(int num) {
+		counter = counter - num;
+	}
 
 //	public static void main(String[] args) {
 //		ClickingWindow electionrigger = new ClickingWindow();

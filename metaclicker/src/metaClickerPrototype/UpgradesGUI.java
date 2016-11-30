@@ -18,6 +18,11 @@ public class UpgradesGUI extends JFrame{
 	private PassiveUpgrades passive4;
 	private PassiveUpgrades passive5;
 	
+	private JPanel firstUpgrade;
+	private JLabel firstUpgradeTitle;
+	private JLabel firstUpgradeDesc;
+	private JButton firstUpgradeButton;
+	
 	public UpgradesGUI() {
 		super("Upgrades");
 		
@@ -99,6 +104,15 @@ public class UpgradesGUI extends JFrame{
 	
 	public void createUpgradesPanel() {
 		//in which we draw the ui for purchasing upgrades
+		firstUpgradeTitle = new JLabel(active1.upgradeName);
+		firstUpgradeDesc = new JLabel(active1.upgradeDescription);
+		firstUpgrade = new JPanel();
+		firstUpgradeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//
+				}
+			});
+		
 	}
 
 }
