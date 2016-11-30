@@ -27,8 +27,13 @@ public class Clicker extends JFrame {
 		return this.lifetimeCounter;
 	}
 	
-	public void removeClicks(int num) {
-		counter = counter - num;
+	public boolean removeClicks(int num) {
+		if (counter > num) {
+			counter = counter - num;
+			return true;
+		}
+		else
+			return false;
 	}
 
 //	public static void main(String[] args) {
