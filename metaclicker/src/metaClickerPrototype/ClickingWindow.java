@@ -104,65 +104,7 @@ public class ClickingWindow extends JFrame {
 		/*
 		 * while(!isClosed) { SwingUtilities.updateComponentTreeUI(this); }
 		 */
-		active1 = new ActiveUpgrades();
-		active1.setName("Click Multiplier");
-		active1.setDesc("You modified the button to increment by two.");
-		active1.setCost(10);
-		active1.setMult(1.5);
-		
-		active2 = new ActiveUpgrades();
-		active2.setName("Upgrade 2");
-		active2.setDesc("Temp description");
-		active2.setCost(20);
-		active2.setMult(2.0);
-		
-		active3 = new ActiveUpgrades();
-		active3.setName("Upgrade 3");
-		active3.setDesc("Temp description");
-		active3.setCost(30);
-		active3.setMult(3.0);
-		
-		active4 = new ActiveUpgrades();
-		active4.setName("Upgrade 4");
-		active4.setDesc("Temp description");
-		active4.setCost(40);
-		active4.setMult(4.0);
-		
-		active5 = new ActiveUpgrades();
-		active5.setName("Upgrade 5");
-		active5.setDesc("Temp description");
-		active5.setCost(50);
-		active5.setMult(5.0);
-		
-		passive1 = new PassiveUpgrades();
-		passive1.setCost(15);
-		passive1.setDesc("You used your knowledge in computer programming to set up a shoddy auto clicker.");
-		passive1.setName("Auto-Clicker");
-		passive1.setCPS(1);
-		
-		passive2 = new PassiveUpgrades();
-		passive2.setCost(25);
-		passive2.setDesc("You properly understand coding syntax and create a second program to optimize");
-		passive2.setName("Optimizer");
-		passive2.setCPS(2);
-		
-		passive3 = new PassiveUpgrades();
-		passive3.setCost(35);
-		passive3.setDesc("You decide this game sucks and cheat by modifying game files to run multiple instances");
-		passive3.setName("Clone");
-		passive3.setCPS(3);
-		
-		passive4 = new PassiveUpgrades();
-		passive4.setCost(45);
-		passive4.setDesc("You cheat by hiring a bunch of monkeys to click for you");
-		passive4.setName("Monkeys");
-		passive4.setCPS(4);
-		
-		passive5 = new PassiveUpgrades();
-		passive5.setCost(55);
-		passive5.setDesc("Harambe, our lord and savior, felt insulted that you went after his kin, therefore he took over the whole operation.");
-		passive5.setName("Good ol' Harambe");
-		passive5.setCPS(5);
+		initializeUpgrades();
 		createUpgradesPanel();
 	}
 
@@ -250,6 +192,68 @@ public class ClickingWindow extends JFrame {
 	
 	private Clicker getClicks(){
 		return clicks;
+	}
+	
+	private void initializeUpgrades() {
+		active1 = new ActiveUpgrades();
+		active1.setName("Click Multiplier");
+		active1.setDesc("You modified the button to increment by two.");
+		active1.setCost(10);
+		active1.setMult(1.5);
+		
+		active2 = new ActiveUpgrades();
+		active2.setName("Upgrade 2");
+		active2.setDesc("Temp description");
+		active2.setCost(20);
+		active2.setMult(2.0);
+		
+		active3 = new ActiveUpgrades();
+		active3.setName("Upgrade 3");
+		active3.setDesc("Temp description");
+		active3.setCost(30);
+		active3.setMult(3.0);
+		
+		active4 = new ActiveUpgrades();
+		active4.setName("Upgrade 4");
+		active4.setDesc("Temp description");
+		active4.setCost(40);
+		active4.setMult(4.0);
+		
+		active5 = new ActiveUpgrades();
+		active5.setName("Upgrade 5");
+		active5.setDesc("Temp description");
+		active5.setCost(50);
+		active5.setMult(5.0);
+		
+		passive1 = new PassiveUpgrades();
+		passive1.setCost(15);
+		passive1.setDesc("You used your knowledge in computer programming to set up a shoddy auto clicker.");
+		passive1.setName("Auto-Clicker");
+		passive1.setCPS(1);
+		
+		passive2 = new PassiveUpgrades();
+		passive2.setCost(25);
+		passive2.setDesc("You properly understand coding syntax and create a second program to optimize");
+		passive2.setName("Optimizer");
+		passive2.setCPS(2);
+		
+		passive3 = new PassiveUpgrades();
+		passive3.setCost(35);
+		passive3.setDesc("You decide this game sucks and cheat by modifying game files to run multiple instances");
+		passive3.setName("Clone");
+		passive3.setCPS(3);
+		
+		passive4 = new PassiveUpgrades();
+		passive4.setCost(45);
+		passive4.setDesc("You cheat by hiring a bunch of monkeys to click for you");
+		passive4.setName("Monkeys");
+		passive4.setCPS(4);
+		
+		passive5 = new PassiveUpgrades();
+		passive5.setCost(55);
+		passive5.setDesc("Harambe, our lord and savior, felt insulted that you went after his kin, therefore he took over the whole operation.");
+		passive5.setName("Good ol' Harambe");
+		passive5.setCPS(5);
 	}
 	
 	public void createUpgradesPanel() {
