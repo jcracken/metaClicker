@@ -3,7 +3,7 @@ package metaClickerPrototype;
 import java.awt.*;
 import javax.swing.*;
 import java.util.Timer;
-
+import java.util.TimerTask;
 import java.awt.event.*;
 
 public class ClickingWindow extends JFrame {
@@ -49,6 +49,7 @@ public class ClickingWindow extends JFrame {
 	private JButton firstUpgradeButton;
 	
 	private Timer timer = new Timer();
+	private double CPS = 0;
 
 	public ClickingWindow() {
 		
@@ -110,6 +111,14 @@ public class ClickingWindow extends JFrame {
 		 */
 		initializeUpgrades();
 		createUpgradesPanel();
+		
+		timer.scheduleAtFixedRate(new TimerTask()
+		{
+			public void run()
+			{
+				clicks.addClicks(CPS);
+			}
+		}, 0, 1000);
 	}
 
 	public void buildPanel() {

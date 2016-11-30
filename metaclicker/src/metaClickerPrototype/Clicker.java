@@ -25,6 +25,10 @@ public class Clicker extends JFrame {
 		return counter;
 	}
 	
+	public void addClicks(double clicks) {
+		counter = counter + clicks;
+	}
+	
 	public void setClickRate(double cr) {
 		countRate = cr;
 	}
