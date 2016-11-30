@@ -93,7 +93,7 @@ public class ClickingWindow extends JFrame {
 
 		frame.add(panel, BorderLayout.CENTER);
 
-		frame.setLayout(new GridLayout(4, 1));
+		frame.setLayout(new GridLayout(5,1));
 
 		frame.add(labelPanel, BorderLayout.CENTER);
 
@@ -164,6 +164,7 @@ public class ClickingWindow extends JFrame {
 		passive5.setDesc("Harambe, our lord and savior, felt insulted that you went after his kin, therefore he took over the whole operation.");
 		passive5.setName("Good ol' Harambe");
 		passive5.setCPS(5);
+		createUpgradesPanel();
 	}
 
 	public void buildPanel() {
@@ -175,8 +176,7 @@ public class ClickingWindow extends JFrame {
 				
 				counts.setText(clicks.getCounter() + " clicks counted");
 				if (clicks.getCounter() >= 10 && upgradeCheck == false){
-					addUpgrades();
-					
+					frame.add(firstUpgrade);
 					upgradeCheck = true;
 				}
 				
@@ -192,7 +192,7 @@ public class ClickingWindow extends JFrame {
 		upgrades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (isClosedUpgrades == false) {
-					upgradeScreen = new UpgradesGUI();
+					//blargh
 					isClosedUpgrades = true;
 				}
 			}
@@ -258,10 +258,14 @@ public class ClickingWindow extends JFrame {
 		firstUpgradeTitle = new JLabel(active1.upgradeName);
 		firstUpgradeDesc = new JLabel(active1.upgradeDescription);
 		firstUpgrade = new JPanel();
+		firstUpgradeButton = new JButton("10 Clicks");
 		firstUpgradeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				clicks.removeClicks(10);
 				}
 			});
+		firstUpgrade.add(firstUpgradeTitle);
+		firstUpgrade.add(firstUpgradeDesc);
+		firstUpgrade.add(firstUpgradeButton);
 	}
 }
