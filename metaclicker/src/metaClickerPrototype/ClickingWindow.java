@@ -2,6 +2,7 @@ package metaClickerPrototype;
 
 import java.awt.*;
 import javax.swing.*;
+import java.util.Timer;
 
 import java.awt.event.*;
 
@@ -46,6 +47,8 @@ public class ClickingWindow extends JFrame {
 	private JLabel firstUpgradeTitle;
 	private JLabel firstUpgradeDesc;
 	private JButton firstUpgradeButton;
+	
+	private Timer timer = new Timer();
 
 	public ClickingWindow() {
 		
