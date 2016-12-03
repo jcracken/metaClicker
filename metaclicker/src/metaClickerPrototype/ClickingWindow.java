@@ -51,6 +51,7 @@ public class ClickingWindow extends JFrame {
 	
 	private Timer timer = new Timer();
 	private double CPS = 0;
+	private int endGame = 0;
 
 	public ClickingWindow() {
 		
@@ -118,6 +119,19 @@ public class ClickingWindow extends JFrame {
 			public void run()
 			{
 				clicks.addClicks(CPS);
+				if(passive6.upgradePurchased)
+				{
+					if(clicks.getCounter() <= 0.0) {
+						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You dumbass!", "Game Over", JOptionPane.ERROR_MESSAGE);
+						//end the game somehow
+					}
+					else
+						endGame++;
+					if(endGame >= 1200) {
+						JOptionPane.showMessageDialog(null, "You exterminated the xenomorphs and feasted on their corpses. Winner is you!!!", "You Win", JOptionPane.INFORMATION_MESSAGE);
+						//win state, let player continue or exit out?
+					}
+				}
 			}
 		}, 0, 1000);
 	}
