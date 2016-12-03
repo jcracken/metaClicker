@@ -13,7 +13,7 @@ public class ClickingWindow extends JFrame {
 	private JButton clickme;
 	private JButton players;
 	private JButton upgrades;
-	private JPanel panel;
+	private JPanel clickerPanel;
 	private JPanel labelPanel;
 	private JPanel playerPanel;
 	private JPanel upgradePanel;
@@ -57,7 +57,7 @@ public class ClickingWindow extends JFrame {
 		clickme = new JButton("Click me");
 		upgrades = new JButton("Upgrades");
 		players = new JButton("Statistics");
-		panel = new JPanel();
+		clickerPanel = new JPanel();
 		labelPanel = new JPanel();
 		playerPanel = new JPanel();
 		upgradePanel = new JPanel();
@@ -91,7 +91,7 @@ public class ClickingWindow extends JFrame {
 		buildPanel();
 		frame.setLayout(new GridLayout(2,3));
 		
-		frame.add(panel, BorderLayout.CENTER);
+		frame.add(clickerPanel, BorderLayout.CENTER);
 
 		
 
@@ -126,7 +126,7 @@ public class ClickingWindow extends JFrame {
 		});
 		// panel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		addPlayers();
-		panel.add(clickme);
+		clickerPanel.add(clickme);
 		labelPanel.add(counts);
 	}
 
