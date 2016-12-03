@@ -19,8 +19,8 @@ public class ClickingWindow extends JFrame {
 	private JPanel playerPanel;
 	private JPanel upgradePanel;
 	private JLabel counts;
-	private UpgradesGUI upgradeScreen;
-	private PlayersGUI playerScreen;
+	// private UpgradesGUI upgradeScreen;
+	// private PlayersGUI playerScreen;
 	private boolean isClosedUpgrades = false;
 	private boolean isClosedPlayers = false;
 	private boolean upgradeCheck; // prevents GUI from making lots of upgrade
@@ -174,7 +174,7 @@ public class ClickingWindow extends JFrame {
 		players.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (isClosedPlayers == false) {
-					playerScreen = new PlayersGUI();
+					//playerScreen = new PlayersGUI();
 					isClosedPlayers = true;
 				}
 			}
@@ -212,14 +212,6 @@ public class ClickingWindow extends JFrame {
 			}
 		}
 
-	}
-	
-	private void setClicks(Clicker click){
-		clicks = click;
-	}
-	
-	private Clicker getClicks(){
-		return clicks;
 	}
 	
 	private void initializeUpgrades() {
@@ -303,7 +295,7 @@ public class ClickingWindow extends JFrame {
 					else {
 						firstUpgradeButton.setVisible(false);
 						clicks.setClickRate(2);
-					}
+					} //to add more upgrades we need to do the above over and over. blargh.
 				}
 			});
 		firstUpgrade.add(firstUpgradeTitle);
