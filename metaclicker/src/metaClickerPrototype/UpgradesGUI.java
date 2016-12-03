@@ -23,6 +23,7 @@ public class UpgradesGUI extends JFrame{
 	private JLabel firstUpgradeDesc;
 	private JButton firstUpgradeButton;
 	
+	
 	public UpgradesGUI() {
 		super("Upgrades");
 		
@@ -35,6 +36,8 @@ public class UpgradesGUI extends JFrame{
 		createUpgrades();
 		
 		createUpgradesPanel();
+		
+		
 		
 	}
 	

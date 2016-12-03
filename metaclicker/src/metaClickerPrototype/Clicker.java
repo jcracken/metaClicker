@@ -25,6 +25,10 @@ public class Clicker extends JFrame {
 		return counter;
 	}
 	
+	public void addClicks(double clicks) {
+		counter = counter + clicks;
+	}
+	
 	public void setClickRate(double cr) {
 		countRate = cr;
 	}
@@ -34,7 +38,7 @@ public class Clicker extends JFrame {
 	}
 	
 	public boolean removeClicks(int num) {
-		if (counter > num) {
+		if (counter >= num) {
 			counter = counter - num;
 			return true;
 		}
