@@ -89,6 +89,7 @@ public class ClickingGUI_v2 extends JFrame{
 			public void run()
 			{
 				user.addClicks(user.getCPS());
+				statisticTextField.setText(user.getStatistics());
 				if(passive6.upgradePurchased)
 				{
 					if(user.getCounter() <= 0.0) {
@@ -336,7 +337,7 @@ public class ClickingGUI_v2 extends JFrame{
 		passive2 = new PassiveUpgrade_v2();
 		passive2.setCost(100);
 		passive2.setDesc("You properly understand coding syntax and create a second program to optimize. (Increases passive clicks by five).");
-		passive2.setName("Execute Optimizer"); //fourth
+		passive2.setName("Execution Optimizer"); //fourth
 		passive2.setCPS(5);
 		
 		passive3 = new PassiveUpgrade_v2();
@@ -353,15 +354,15 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		passive5 = new PassiveUpgrade_v2();
 		passive5.setCost(1000000);
-		passive5.setDesc("Harambe for the assist! Gives you an edge on those alien bastards who shot up your ride (Increases passive clicks to -150).");
+		passive5.setDesc("Harambe for the assist! Gives you an edge on those alien bastards who shot up your ride (Increases passive clicks to -1500).");
 		passive5.setName("clicks out for Harambe"); //eleven
-		passive5.setCPS(86);
+		passive5.setCPS(-1500);
 		
 		passive6 = new PassiveUpgrade_v2();
 		passive6.setCost(500000);
-		passive6.setDesc("KILL KILL KILL (Decreases passive clicks to -200).");
+		passive6.setDesc("KILL KILL KILL (Decreases passive clicks to -2000).");
 		passive6.setName("Xenomorph War"); //ten
-		passive6.setCPS(-236); //if this upgrade is bought and hits zero, you lose. otherwise, you get a win dialog after 20 min.
+		passive6.setCPS(-2000); //if this upgrade is bought and hits zero, you lose. otherwise, you get a win dialog after 20 min.
 		
 	}
 	
