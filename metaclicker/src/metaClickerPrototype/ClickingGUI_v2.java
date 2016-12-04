@@ -5,6 +5,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import metaClickerPrototype.ClickingGUI_v2.MainButtonListener;
+
 //import metaClickerPrototype.ClickingGUI_v2.ButtonListener;
 
 import java.util.Timer;
@@ -14,7 +16,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class ClickingGUI_v2 extends JFrame{
-	
+	boolean startGame;
 	JFrame topFrame;
 	
 	JPanel clickArea;
@@ -27,6 +29,8 @@ public class ClickingGUI_v2 extends JFrame{
 	JButton clickMe;
 	JButton clickSave;
 	JButton clickLoad;
+	JButton playGame;
+	JButton loadGame;
 	JTextArea statisticTextField;
 	
 	// Upgrades
@@ -100,8 +104,21 @@ public class ClickingGUI_v2 extends JFrame{
 		//this.setSize(800,600);
 		topFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		topFrame.setLayout(new GridLayout(1,3));
+		topFrame.setSize(600, 800);
 
 		initializeUpgrades();
+		startGame = false;
+		buildMainMenu();
+		topFrame.setVisible(true);
+		while(startGame == false){
+			
+			
+			
+			
+		}	
+		playGame.setVisible(false);
+		loadGame.setVisible(false);
+		
 		buildGUI();
 		topFrame.setVisible(true);
 		
@@ -115,15 +132,15 @@ public class ClickingGUI_v2 extends JFrame{
 				{
 					if(user.getCounter() <= 0.0) {
 						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You dumbass!", "Game Over", JOptionPane.ERROR_MESSAGE);
-						System.exit(0);
+						//end the game somehow
 					}
 					else
 						endGame++;
-					if(endGame >= 600) {
+					if(endGame >= 1200) {
 						JOptionPane.showMessageDialog(null, "You exterminated the xenomorphs and feasted on their corpses. Winner is you!!!", "You Win", JOptionPane.INFORMATION_MESSAGE);
 						//win state, let player continue or exit out?
 					}
-					else if (endGame >= 300)
+					else if (endGame >= 600)
 						harambePls = true;
 						
 				}
@@ -131,6 +148,50 @@ public class ClickingGUI_v2 extends JFrame{
 		}, 0, 1000);
 	}
 
+	public void buildMainMenu(){
+		playGame = new JButton();
+		loadGame = new JButton();
+		
+		playGame.addActionListener(new MainButtonListener());
+		loadGame.addActionListener(new MainButtonListener());
+		
+		topFrame.add(playGame);
+		topFrame.add(loadGame);
+		
+		playGame.setText("Start a new game");
+		loadGame.setText("Load from a previous save");
+		
+		playGame.setOpaque(true);
+		loadGame.setOpaque(true);
+		
+		loadGame.setForeground(Color.BLUE);
+		playGame.setForeground(Color.BLUE);
+		
+		loadGame.setBackground(Color.PINK);
+		playGame.setBackground(Color.PINK);
+		
+		playGame.setVisible(true);
+		loadGame.setVisible(true);
+	}
+	
+	private class MainButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent source) {
+			if(source.equals(playGame)){
+				new ClickingGUI_v2().setVisible(true);
+				//setVisible(false);
+				startGame = true;
+			}
+			else if(source.equals(loadGame)){
+				user = Player_v2.loadGame();
+				createUpgradePanels();
+				startGame = true;
+			}
+			
+		}
+		
+	}
 	public void buildGUI() {
 		
 		// User
