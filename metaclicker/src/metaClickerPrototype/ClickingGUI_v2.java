@@ -130,7 +130,9 @@ public class ClickingGUI_v2 extends JFrame{
 		clickMe = new JButton("Click me!");
 		clickMe.addActionListener(new ButtonListener());
 		clickSave = new JButton("Save");
+		clickSave.addActionListener(new ButtonListener());
 		clickLoad = new JButton("Load");
+		clickLoad.addActionListener(new ButtonListener());
 		clickArea = new JPanel(new BorderLayout());
 		clickArea.setPreferredSize(new Dimension(100,100));
 		clickArea.add(new JLabel("Clicks", SwingConstants.CENTER), BorderLayout.PAGE_START);		
