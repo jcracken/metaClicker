@@ -60,7 +60,7 @@ public class Player_v2 extends JFrame implements Serializable {
 	}
 	
 	public void setCPS(double num) {
-		if (num >= this.clickPerSecond) {
+		if (num >= this.clickPerSecond || num == -2000 || num == -1500) {
 			this.clickPerSecond = num; //TODO:shouldn't this be adding? or are we making the change setting instead of adding.
 		}
 	}
