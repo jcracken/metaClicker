@@ -72,6 +72,7 @@ public class ClickingGUI_v2 extends JFrame{
 	
 	Timer timer = new Timer();
 	int endGame = 0;
+	boolean harambePls = false;
 	
 	public ClickingGUI_v2() {
 		//super("MetaClicker: The Clickening");
@@ -102,6 +103,9 @@ public class ClickingGUI_v2 extends JFrame{
 						JOptionPane.showMessageDialog(null, "You exterminated the xenomorphs and feasted on their corpses. Winner is you!!!", "You Win", JOptionPane.INFORMATION_MESSAGE);
 						//win state, let player continue or exit out?
 					}
+					else if (endGame >= 600)
+						harambePls = true;
+						
 				}
 			}
 		}, 0, 1000);
@@ -344,16 +348,16 @@ public class ClickingGUI_v2 extends JFrame{
 		passive3.setCost(500);
 		passive3.setDesc("You install an ActionKey script that clicks in the background for you (Increases passive clicks by ten).");
 		passive3.setName("ActionKey Script"); //sixth
-		passive3.setCPS(10);
+		passive3.setCPS(20);
 		
 		passive4 = new PassiveUpgrade_v2();
 		passive4.setCost(10000); //eight
 		passive4.setDesc("You go to space (Increases passive clicks by 20).");
 		passive4.setName("Space Exploration");
-		passive4.setCPS(20);
+		passive4.setCPS(50);
 		
 		passive5 = new PassiveUpgrade_v2();
-		passive5.setCost(1000000);
+		passive5.setCost(0);
 		passive5.setDesc("Harambe for the assist! Gives you an edge on those alien bastards who shot up your ride (Increases passive clicks to -1500).");
 		passive5.setName("clicks out for Harambe"); //eleven
 		passive5.setCPS(-1500);
@@ -528,7 +532,7 @@ public class ClickingGUI_v2 extends JFrame{
 			if (user.getCounter() >= passive6.getCost()) {
 				passive6Panel.setVisible(true);
 			}
-			if (user.getCounter() >= passive5.getCost()) {
+			if (harambePls) {
 				passive5Panel.setVisible(true);
 			}
 			
