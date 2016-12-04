@@ -5,10 +5,6 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import metaClickerPrototype.ClickingGUI_v2.MainButtonListener;
-
-//import metaClickerPrototype.ClickingGUI_v2.ButtonListener;
-
 import java.util.Timer;
 import java.util.TimerTask;
 import java.io.*;
@@ -16,8 +12,14 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class ClickingGUI_v2 extends JFrame{
-	boolean startGame;
+	
 	JFrame topFrame;
+	JFrame menuFrame;
+	
+	JPanel playGamePanel;
+	JButton playGameButton;
+	JPanel loadGamePanel;
+	JButton loadGameButton;
 	
 	JPanel clickArea;
 	JPanel statisticArea;
@@ -29,8 +31,6 @@ public class ClickingGUI_v2 extends JFrame{
 	JButton clickMe;
 	JButton clickSave;
 	JButton clickLoad;
-	JButton playGame;
-	JButton loadGame;
 	JTextArea statisticTextField;
 	
 	// Upgrades
@@ -100,27 +100,21 @@ public class ClickingGUI_v2 extends JFrame{
 	
 	public ClickingGUI_v2() {
 		//super("MetaClicker: The Clickening");
+		menuFrame = new JFrame("MetaClicker: The Clickening");
 		topFrame = new JFrame("MetaClicker: The Clickening");
 		//this.setSize(800,600);
+		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		menuFrame.setLayout(new GridLayout(1,3));
+		menuFrame.setSize(600, 800);
 		topFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		topFrame.setLayout(new GridLayout(1,3));
 		topFrame.setSize(600, 800);
 
 		initializeUpgrades();
-		startGame = false;
 		buildMainMenu();
-		topFrame.setVisible(true);
-		while(startGame == false){
-			
-			
-			
-			
-		}	
-		playGame.setVisible(false);
-		loadGame.setVisible(false);
-		
 		buildGUI();
-		topFrame.setVisible(true);
+		menuFrame.setVisible(true);
+		topFrame.setVisible(false);
 		
 		timer.scheduleAtFixedRate(new TimerTask()
 		{
@@ -149,49 +143,28 @@ public class ClickingGUI_v2 extends JFrame{
 	}
 
 	public void buildMainMenu(){
-		playGame = new JButton();
-		loadGame = new JButton();
+		playGameButton = new JButton("Play Game");
+		clickLoad = new JButton("Load Game");
 		
-		playGame.addActionListener(new MainButtonListener());
-		loadGame.addActionListener(new MainButtonListener());
+		playGameButton.addActionListener(new ButtonListener());
+		clickLoad.addActionListener(new ButtonListener());
 		
-		topFrame.add(playGame);
-		topFrame.add(loadGame);
+		playGameButton.setOpaque(true);
+		clickLoad.setOpaque(true);
 		
-		playGame.setText("Start a new game");
-		loadGame.setText("Load from a previous save");
+		clickLoad.setForeground(Color.BLUE);
+		playGameButton.setForeground(Color.BLUE);
 		
-		playGame.setOpaque(true);
-		loadGame.setOpaque(true);
+		clickLoad.setBackground(Color.PINK);
+		playGameButton.setBackground(Color.PINK);
 		
-		loadGame.setForeground(Color.BLUE);
-		playGame.setForeground(Color.BLUE);
+		playGameButton.setVisible(true);
+		clickLoad.setVisible(true);
 		
-		loadGame.setBackground(Color.PINK);
-		playGame.setBackground(Color.PINK);
-		
-		playGame.setVisible(true);
-		loadGame.setVisible(true);
+		menuFrame.add(playGameButton);
+		menuFrame.add(clickLoad);
 	}
 	
-	private class MainButtonListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent source) {
-			if(source.equals(playGame)){
-				new ClickingGUI_v2().setVisible(true);
-				//setVisible(false);
-				startGame = true;
-			}
-			else if(source.equals(loadGame)){
-				user = Player_v2.loadGame();
-				createUpgradePanels();
-				startGame = true;
-			}
-			
-		}
-		
-	}
 	public void buildGUI() {
 		
 		// User
@@ -200,7 +173,7 @@ public class ClickingGUI_v2 extends JFrame{
 		// Left pane, upgrades
 		upgradePanel = new JPanel();
 		upgradePanel.setLayout(new BoxLayout(upgradePanel, BoxLayout.Y_AXIS));
-		this.createUpgradePanels();
+		//this.createUpgradePanels();
 		upgradeList = new JScrollPane(upgradePanel);
 		upgradeList.setPreferredSize(new Dimension(225,225));
 		upgradeArea = new JPanel(new BorderLayout());
@@ -213,8 +186,8 @@ public class ClickingGUI_v2 extends JFrame{
 		clickMe.addActionListener(new ButtonListener());
 		clickSave = new JButton("Save");
 		clickSave.addActionListener(new ButtonListener());
-		clickLoad = new JButton("Load");
-		clickLoad.addActionListener(new ButtonListener());
+		//clickLoad = new JButton("Load");
+		//clickLoad.addActionListener(new ButtonListener());
 		clickArea = new JPanel(new BorderLayout());
 		clickArea.setBackground(Color.WHITE);
 		clickArea.setPreferredSize(new Dimension(100,100));
@@ -222,7 +195,7 @@ public class ClickingGUI_v2 extends JFrame{
 		clickArea.add(clickMe, BorderLayout.CENTER);
 		JPanel tempPanel = new JPanel(new BorderLayout());
 		tempPanel.add(clickSave, BorderLayout.WEST);
-		tempPanel.add(clickLoad, BorderLayout.EAST);
+		//tempPanel.add(clickLoad, BorderLayout.EAST);
 		clickArea.add(tempPanel, BorderLayout.PAGE_END);
 		
 		// Right pane, stats
@@ -562,8 +535,14 @@ public class ClickingGUI_v2 extends JFrame{
 			{
 				Player_v2.saveGame(user);
 			}
+			else if (source.equals(playGameButton)) {
+				menuFrame.setVisible(false);
+				topFrame.setVisible(true);
+			}
 			else if (source.equals(clickLoad)) {
 				user = Player_v2.loadGame();
+				menuFrame.setVisible(false);
+				topFrame.setVisible(true);
 				createUpgradePanels();
 			}
 			else if (source.equals(active1Button)) {
