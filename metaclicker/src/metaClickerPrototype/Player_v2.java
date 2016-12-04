@@ -9,12 +9,14 @@ public class Player_v2 extends JFrame implements Serializable {
 	private double clickCounter;
 	private double clickLifetime;
 	private double clickMultiplier;
+	private double clickPerSecond;
 	private int upgradePurchased;
 	
 	public Player_v2() {
 		this.clickCounter = 0;
 		this.clickLifetime = 0;
 		this.clickMultiplier = 1;
+		this.clickPerSecond = 0;
 		this.upgradePurchased = 0;
 	}
 	
@@ -48,6 +50,16 @@ public class Player_v2 extends JFrame implements Serializable {
 		}
 	}
 
+	public double getCPS() {
+		return this.clickPerSecond;
+	}
+	
+	public void setCPS(double num) {
+		if (num >= this.clickPerSecond) {
+			this.clickPerSecond = num;
+		}
+	}
+	
 	public void incrementUpgrade() {
 		this.upgradePurchased++;
 	}
@@ -57,8 +69,9 @@ public class Player_v2 extends JFrame implements Serializable {
 		
 		temp = "Current Clicks: " + this.clickCounter + "\n"
 				+ "Lifetime Clicks: " + this.clickLifetime + "\n"
+				+ "Upgrades purchased: " + this.upgradePurchased + "\n\n"
 				+ "Click Multiplier: " + this.clickMultiplier + "\n"
-				+ "Upgrades purchased: " + this.upgradePurchased + "\n";
+				+ "Clicks Per Second: +" + this.clickPerSecond + "\n";
 		
 		return temp;
 	}
