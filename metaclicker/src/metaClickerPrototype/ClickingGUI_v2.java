@@ -325,7 +325,7 @@ public class ClickingGUI_v2 extends JFrame{
 		active5 = new ActiveUpgrade_v2();
 		active5.setName("Utopia"); //nine
 		active5.setDesc("You find a Xenomorph alien civilization with no war and everlasting peace (Upgrades click rate to 100).");
-		active5.setCost(10000);
+		active5.setCost(100000);
 		active5.setMult(100);
 		
 		passive1 = new PassiveUpgrade_v2();
@@ -347,7 +347,7 @@ public class ClickingGUI_v2 extends JFrame{
 		passive3.setCPS(10);
 		
 		passive4 = new PassiveUpgrade_v2();
-		passive4.setCost(100000); //eight
+		passive4.setCost(10000); //eight
 		passive4.setDesc("You go to space (Increases passive clicks by 20).");
 		passive4.setName("Space Exploration");
 		passive4.setCPS(20);
