@@ -121,7 +121,7 @@ public class ClickingGUI_v2 extends JFrame{
 		upgradePanel.setLayout(new BoxLayout(upgradePanel, BoxLayout.Y_AXIS));
 		this.createUpgradePanels();
 		upgradeList = new JScrollPane(upgradePanel);
-		upgradeList.setPreferredSize(new Dimension(225,100));
+		upgradeList.setPreferredSize(new Dimension(225,225));
 		upgradeArea = new JPanel(new BorderLayout());
 		upgradeArea.add(new JLabel("Upgrades", SwingConstants.CENTER), BorderLayout.PAGE_START);
 		upgradeArea.add(upgradeList);
@@ -365,7 +365,7 @@ public class ClickingGUI_v2 extends JFrame{
 		passive5.setCPS(-1500);
 		
 		passive6 = new PassiveUpgrade_v2();
-		passive6.setCost(500000);
+		passive6.setCost(50000);
 		passive6.setDesc("KILL KILL KILL (Decreases passive clicks to -2000).");
 		passive6.setName("Xenomorph War"); //ten
 		passive6.setCPS(-2000); //if this upgrade is bought and hits zero, you lose. otherwise, you get a win dialog after 20 min.
