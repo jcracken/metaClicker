@@ -2,12 +2,13 @@ package metaClickerPrototype;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.io.*;
 import java.net.URL;
-import javax.sound.sampled.*;
+import javax.imageio.ImageIO;
 
 public class ClickingGUI_v2 extends JFrame{
 	
@@ -75,7 +76,20 @@ public class ClickingGUI_v2 extends JFrame{
 	
 	Timer timer = new Timer();
 	int endGame = 0;
-	boolean harambePls = false;      
+	boolean harambePls = false;   
+	
+	ImagePanel active1Image;
+	ImagePanel active2Image;
+	ImagePanel active3Image;
+	ImagePanel active4Image;
+	ImagePanel active5Image;
+	
+	ImagePanel passive1Image;
+	ImagePanel passive2Image;
+	ImagePanel passive3Image;
+	ImagePanel passive4Image;
+	ImagePanel passive5Image;
+	ImagePanel passive6Image;
 	
 	public ClickingGUI_v2() {
 		//super("MetaClicker: The Clickening");
@@ -163,6 +177,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.active1Panel = new JPanel(new BorderLayout());
 		this.active1Panel.add(new JLabel(active1.getName()), BorderLayout.WEST);
+		this.active1Image = new ImagePanel("http://i.imgur.com/79fvIEX.jpg");
+		this.active1Panel.add(active1Image, BorderLayout.CENTER);
 		this.active1Desc = new JTextArea(2,10);
 		this.active1Desc.setEditable(false);
 		this.active1Desc.setText(active1.getDesc());
@@ -171,6 +187,8 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active1Button = new JButton(this.active1.getCost() + " Clicks");
 		this.active1Button.addActionListener(new ButtonListener());
 		this.active1Panel.add(active1Button, BorderLayout.EAST);
+		this.active1Panel.setBackground(Color.WHITE);
+		//this.active1Panel.add(active1Image, BorderLayout.NORTH);
 		this.active1Panel.setVisible(false);
 		this.upgradePanel.add(this.active1Panel);
 		
@@ -397,22 +415,6 @@ public class ClickingGUI_v2 extends JFrame{
 					user.setMultiplier(active1.getMult());
 					user.incrementUpgrade();
 					active1Button.setVisible(false);
-					try {
-				         // Open an audio input stream.
-				         URL url = this.getClass().getClassLoader().getResource("upgrade.wav");
-				         AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
-				         // Get a sound clip resource.
-				         Clip clip = AudioSystem.getClip();
-				         // Open audio clip and load samples from the audio input stream.
-				         clip.open(audioIn);
-				         clip.start();
-				      } catch (UnsupportedAudioFileException i) {
-				         i.printStackTrace();
-				      } catch (IOException i) {
-				         i.printStackTrace();
-				      } catch (LineUnavailableException i) {
-				         i.printStackTrace();
-				      }
 				   }
 				else {
 					JOptionPane.showMessageDialog(null, "You do not have enough clicks.", "Invalid", JOptionPane.ERROR_MESSAGE);
