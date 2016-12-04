@@ -347,10 +347,10 @@ public class ClickingGUI_v2 extends JFrame{
 		passive2.setCPS(5);
 		
 		passive3 = new PassiveUpgrade_v2();
-		passive3.setCost(500);
+		passive3.setCost(4000);
 		passive3.setDesc("You install an ActionKey script that clicks in the background for you (Increases passive clicks by 20).");
 		passive3.setName("ActionKey Script"); //sixth
-		passive3.setCPS(4000);
+		passive3.setCPS(20);
 		
 		passive4 = new PassiveUpgrade_v2();
 		passive4.setCost(10000); //eight
