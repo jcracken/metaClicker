@@ -168,7 +168,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active1Button = new JButton(this.active1.getCost() + " Clicks");
 		this.active1Button.addActionListener(new ButtonListener());
 		this.active1Panel.add(active1Button, BorderLayout.EAST);
-		this.active1Panel.setVisible(false);
+		if(user.getMultiplier() >= active1.getMult()){
+			this.active1Panel.setVisible(true);
+			this.active1Button.setVisible(false);
+		}
+		else
+			this.active1Panel.setVisible(false);
 		this.upgradePanel.add(this.active1Panel);
 		
 		this.passive1Panel = new JPanel(new BorderLayout());
@@ -181,7 +186,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive1Button = new JButton(this.passive1.getCost() + " Clicks");
 		this.passive1Button.addActionListener(new ButtonListener());
 		this.passive1Panel.add(passive1Button, BorderLayout.EAST);
-		this.passive1Panel.setVisible(false);
+		if(user.getCPS() >= passive1.getCPS()){
+			this.passive1Panel.setVisible(true);
+			this.passive1Button.setVisible(false);
+		}
+		else
+			this.passive1Panel.setVisible(false);
 		this.upgradePanel.add(this.passive1Panel);
 		
 		this.active2Panel = new JPanel(new BorderLayout());
@@ -194,7 +204,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active2Button = new JButton(this.active2.getCost() + " Clicks");
 		this.active2Button.addActionListener(new ButtonListener());
 		this.active2Panel.add(active2Button, BorderLayout.EAST);
-		this.active2Panel.setVisible(false);
+		if(user.getMultiplier() >= active2.getMult()){
+			this.active2Panel.setVisible(true);
+			this.active2Button.setVisible(false);
+		}
+		else
+			this.active2Panel.setVisible(false);
 		this.upgradePanel.add(this.active2Panel);
 		
 		this.passive2Panel = new JPanel(new BorderLayout());
@@ -207,7 +222,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive2Button = new JButton(this.passive2.getCost() + " Clicks");
 		this.passive2Button.addActionListener(new ButtonListener());
 		this.passive2Panel.add(passive2Button, BorderLayout.EAST);
-		this.passive2Panel.setVisible(false);
+		if(user.getCPS() >= passive2.getCPS()){
+			this.passive2Panel.setVisible(true);
+			this.passive2Button.setVisible(false);
+		}
+		else
+			this.passive2Panel.setVisible(false);
 		this.upgradePanel.add(this.passive2Panel);
 		
 		this.active3Panel = new JPanel(new BorderLayout());
@@ -220,7 +240,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active3Button = new JButton(this.active3.getCost() + " Clicks");
 		this.active3Button.addActionListener(new ButtonListener());
 		this.active3Panel.add(active3Button, BorderLayout.EAST);
-		this.active3Panel.setVisible(false);
+		if(user.getMultiplier() >= active3.getMult()){
+			this.active3Panel.setVisible(true);
+			this.active3Button.setVisible(false);
+		}
+		else
+			this.active3Panel.setVisible(false);
 		this.upgradePanel.add(this.active3Panel);
 		
 		this.passive3Panel = new JPanel(new BorderLayout());
@@ -233,7 +258,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive3Button = new JButton(this.passive3.getCost() + " Clicks");
 		this.passive3Button.addActionListener(new ButtonListener());
 		this.passive3Panel.add(passive3Button, BorderLayout.EAST);
-		this.passive3Panel.setVisible(false);
+		if(user.getCPS() >= passive3.getCPS()){
+			this.passive3Panel.setVisible(true);
+			this.passive3Button.setVisible(false);
+		}
+		else
+			this.passive3Panel.setVisible(false);
 		this.upgradePanel.add(this.passive3Panel);
 		
 		this.active4Panel = new JPanel(new BorderLayout());
@@ -246,7 +276,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active4Button = new JButton(this.active4.getCost() + " Clicks");
 		this.active4Button.addActionListener(new ButtonListener());
 		this.active4Panel.add(active4Button, BorderLayout.EAST);
-		this.active4Panel.setVisible(false);
+		if(user.getMultiplier() >= active4.getMult()){
+			this.active4Panel.setVisible(true);
+			this.active4Button.setVisible(false);
+		}
+		else
+			this.active4Panel.setVisible(false);
 		this.upgradePanel.add(this.active4Panel);
 		
 		this.passive4Panel = new JPanel(new BorderLayout());
@@ -259,7 +294,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive4Button = new JButton(this.passive4.getCost() + " Clicks");
 		this.passive4Button.addActionListener(new ButtonListener());
 		this.passive4Panel.add(passive4Button, BorderLayout.EAST);
-		this.passive4Panel.setVisible(false);
+		if(user.getCPS() >= passive4.getCPS()){
+			this.passive4Panel.setVisible(true);
+			this.passive4Button.setVisible(false);
+		}
+		else
+			this.passive4Panel.setVisible(false);
 		this.upgradePanel.add(this.passive4Panel);
 		
 		this.active5Panel = new JPanel(new BorderLayout());
@@ -272,7 +312,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active5Button = new JButton(this.active5.getCost() + " Clicks");
 		this.active5Button.addActionListener(new ButtonListener());
 		this.active5Panel.add(active5Button, BorderLayout.EAST);
-		this.active5Panel.setVisible(false);
+		if(user.getMultiplier() >= active5.getMult()){
+			this.active5Panel.setVisible(true);
+			this.active5Button.setVisible(false);
+		}
+		else
+			this.active5Panel.setVisible(false);
 		this.upgradePanel.add(this.active5Panel);
 		
 		this.passive6Panel = new JPanel(new BorderLayout());
@@ -285,7 +330,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive6Button = new JButton(this.passive6.getCost() + " Clicks");
 		this.passive6Button.addActionListener(new ButtonListener());
 		this.passive6Panel.add(passive6Button, BorderLayout.EAST);
-		this.passive6Panel.setVisible(false);
+		if(user.getCPS() <= passive6.getCPS()){
+			this.passive6Panel.setVisible(true);
+			this.passive6Button.setVisible(false);
+		}
+		else
+			this.passive6Panel.setVisible(false);
 		this.upgradePanel.add(this.passive6Panel);
 		
 		this.passive5Panel = new JPanel(new BorderLayout());
@@ -298,7 +348,12 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive5Button = new JButton(this.passive5.getCost() + " Clicks");
 		this.passive5Button.addActionListener(new ButtonListener());
 		this.passive5Panel.add(passive5Button, BorderLayout.EAST);
-		this.passive5Panel.setVisible(false);
+		if(user.getCPS() <= passive5.getCPS()){
+			this.passive5Panel.setVisible(true);
+			this.passive5Button.setVisible(false);
+		}
+		else
+			this.passive5Panel.setVisible(false);
 		this.upgradePanel.add(this.passive5Panel);
 	}
 	
@@ -307,47 +362,47 @@ public class ClickingGUI_v2 extends JFrame{
 		active1 = new ActiveUpgrade_v2();
 		active1.setName("Mouse Upgrade"); //first
 		active1.setDesc("You bought a new mouse that clicks twice every time you click (Upgrades click rate to 2).");
-		active1.setCost(50);
+		active1.setCost(10);
 		active1.setMult(2);
 		
 		active2 = new ActiveUpgrade_v2();
 		active2.setName("Run Cheat Engine"); //third
 		active2.setDesc("Use Cheat Engine to speed up the game (Upgrades click rate to 5).");
-		active2.setCost(400);
+		active2.setCost(50);
 		active2.setMult(5);
 		
 		active3 = new ActiveUpgrade_v2();
 		active3.setName("Faster Processor"); //fifth
 		active3.setDesc("You bought a new CPU, congrats (Upgrades click rate to 20).");
-		active3.setCost(1200);
+		active3.setCost(250);
 		active3.setMult(20);
 		
 		active4 = new ActiveUpgrade_v2();
 		active4.setName("Trumpacolypse"); //seventh
 		active4.setDesc("Trump gets elected president and the world is about to end, but at least you won a bet (Upgrades click rate to 50).");
-		active4.setCost(4800);
+		active4.setCost(750);
 		active4.setMult(50);
 		
 		active5 = new ActiveUpgrade_v2();
 		active5.setName("Utopia"); //nine
 		active5.setDesc("You find a Xenomorph alien civilization with no war and everlasting peace (Upgrades click rate to 100).");
-		active5.setCost(12000);
+		active5.setCost(100000);
 		active5.setMult(100);
 		
 		passive1 = new PassiveUpgrade_v2();
-		passive1.setCost(200);
+		passive1.setCost(20);
 		passive1.setDesc("You used your knowledge in computer programming to set up a shoddy auto clicker (Increases passive clicks by one).");
 		passive1.setName("Auto-Clicker"); //second
 		passive1.setCPS(1);
 		
 		passive2 = new PassiveUpgrade_v2();
-		passive2.setCost(800);
+		passive2.setCost(100);
 		passive2.setDesc("You properly understand coding syntax and create a second program to optimize. (Increases passive clicks by five).");
 		passive2.setName("Execution Optimizer"); //fourth
 		passive2.setCPS(5);
 		
 		passive3 = new PassiveUpgrade_v2();
-		passive3.setCost(4000);
+		passive3.setCost(500);
 		passive3.setDesc("You install an ActionKey script that clicks in the background for you (Increases passive clicks by 20).");
 		passive3.setName("ActionKey Script"); //sixth
 		passive3.setCPS(20);
@@ -388,6 +443,7 @@ public class ClickingGUI_v2 extends JFrame{
 			}
 			else if (source.equals(clickLoad)) {
 				user = Player_v2.loadGame();
+				createUpgradePanels();
 			}
 			else if (source.equals(active1Button)) {
 				if (user.removeClicks(active1.getCost())) {
