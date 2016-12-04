@@ -3,7 +3,9 @@ package metaClickerPrototype;
 import java.awt.*;
 import javax.swing.*;
 import java.io.*;
+import java.util.*;
 
+@SuppressWarnings("serial")
 public class Player_v2 extends JFrame implements Serializable {
 	
 	private double clickCounter;
@@ -11,6 +13,7 @@ public class Player_v2 extends JFrame implements Serializable {
 	private double clickMultiplier;
 	private double clickPerSecond;
 	private int upgradePurchased;
+	private ArrayList<Upgrade_v2> upgradesOwned;
 	
 	public Player_v2() {
 		this.clickCounter = 0;
@@ -18,6 +21,7 @@ public class Player_v2 extends JFrame implements Serializable {
 		this.clickMultiplier = 1;
 		this.clickPerSecond = 0;
 		this.upgradePurchased = 0;
+		upgradesOwned = new ArrayList<Upgrade_v2>();
 	}
 	
 	public void click() {
@@ -48,7 +52,9 @@ public class Player_v2 extends JFrame implements Serializable {
 		}
 		
 	}
-	
+	public double getMultiplier() {
+		return clickMultiplier;
+	}
 	public void setMultiplier(double num) {
 		if (num >= this.clickMultiplier) {
 			this.clickMultiplier = num;
@@ -60,7 +66,7 @@ public class Player_v2 extends JFrame implements Serializable {
 	}
 	
 	public void setCPS(double num) {
-		if (num >= this.clickPerSecond) {
+		if (num >= this.clickPerSecond || num == -2000 || num == -1500) {
 			this.clickPerSecond = num; //TODO:shouldn't this be adding? or are we making the change setting instead of adding.
 		}
 	}
