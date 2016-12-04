@@ -71,6 +71,7 @@ public class ClickingGUI_v2 extends JFrame{
 	JTextArea passive6Desc;
 	
 	Timer timer = new Timer();
+	int endGame = 0;
 	
 	public ClickingGUI_v2() {
 		//super("MetaClicker: The Clickening");
@@ -83,6 +84,26 @@ public class ClickingGUI_v2 extends JFrame{
 		buildGUI();
 		topFrame.setVisible(true);
 		
+		timer.scheduleAtFixedRate(new TimerTask()
+		{
+			public void run()
+			{
+				user.addClicks(user.getCPS());
+				if(passive6.upgradePurchased)
+				{
+					if(user.getCounter() <= 0.0) {
+						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You dumbass!", "Game Over", JOptionPane.ERROR_MESSAGE);
+						//end the game somehow
+					}
+					else
+						endGame++;
+					if(endGame >= 1200) {
+						JOptionPane.showMessageDialog(null, "You exterminated the xenomorphs and feasted on their corpses. Winner is you!!!", "You Win", JOptionPane.INFORMATION_MESSAGE);
+						//win state, let player continue or exit out?
+					}
+				}
+			}
+		}, 0, 1000);
 	}
 
 	public void buildGUI() {
@@ -461,7 +482,16 @@ public class ClickingGUI_v2 extends JFrame{
 					JOptionPane.showMessageDialog(null, "You do not have enough clicks.", "Invalid", JOptionPane.ERROR_MESSAGE);
 				}
 			}
-			
+			else if (source.equals(passive6Button)) {
+				if (user.removeClicks(passive6.getCost())) {
+					user.setCPS(passive6.getCPS());
+					user.incrementUpgrade();
+					passive5Button.setVisible(false);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "You do not have enough clicks.", "Invalid", JOptionPane.ERROR_MESSAGE);
+				}
+			}
 			
 			// Update stats on every action
 			statisticTextField.setText(user.getStatistics());

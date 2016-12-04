@@ -25,6 +25,11 @@ public class Player_v2 extends JFrame implements Serializable {
 		clickLifetime = clickLifetime + clickMultiplier;
 	}
 	
+	public void addClicks(double clicks) {
+		clickCounter = clickCounter + clicks;
+		clickLifetime = clickLifetime + clicks;
+	}
+	
 	public double getCounter() {
 		return this.clickCounter;
 	}
@@ -56,7 +61,7 @@ public class Player_v2 extends JFrame implements Serializable {
 	
 	public void setCPS(double num) {
 		if (num >= this.clickPerSecond) {
-			this.clickPerSecond = num;
+			this.clickPerSecond = num; //TODO:shouldn't this be adding? or are we making the change setting instead of adding.
 		}
 	}
 	
