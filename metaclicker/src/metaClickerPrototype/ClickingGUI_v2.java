@@ -310,47 +310,47 @@ public class ClickingGUI_v2 extends JFrame{
 		active1 = new ActiveUpgrade_v2();
 		active1.setName("Mouse Upgrade"); //first
 		active1.setDesc("You bought a new mouse that clicks twice every time you click (Upgrades click rate to 2).");
-		active1.setCost(10);
+		active1.setCost(50);
 		active1.setMult(2);
 		
 		active2 = new ActiveUpgrade_v2();
 		active2.setName("Run Cheat Engine"); //third
 		active2.setDesc("Use Cheat Engine to speed up the game (Upgrades click rate to 5).");
-		active2.setCost(50);
+		active2.setCost(400);
 		active2.setMult(5);
 		
 		active3 = new ActiveUpgrade_v2();
 		active3.setName("Faster Processor"); //fifth
 		active3.setDesc("You bought a new CPU, congrats (Upgrades click rate to 20).");
-		active3.setCost(250);
+		active3.setCost(1200);
 		active3.setMult(20);
 		
 		active4 = new ActiveUpgrade_v2();
 		active4.setName("Trumpacolypse"); //seventh
 		active4.setDesc("Trump gets elected president and the world is about to end, but at least you won a bet (Upgrades click rate to 50).");
-		active4.setCost(750);
+		active4.setCost(4800);
 		active4.setMult(50);
 		
 		active5 = new ActiveUpgrade_v2();
 		active5.setName("Utopia"); //nine
 		active5.setDesc("You find a Xenomorph alien civilization with no war and everlasting peace (Upgrades click rate to 100).");
-		active5.setCost(100000);
+		active5.setCost(12000);
 		active5.setMult(100);
 		
 		passive1 = new PassiveUpgrade_v2();
-		passive1.setCost(20);
+		passive1.setCost(200);
 		passive1.setDesc("You used your knowledge in computer programming to set up a shoddy auto clicker (Increases passive clicks by one).");
 		passive1.setName("Auto-Clicker"); //second
 		passive1.setCPS(1);
 		
 		passive2 = new PassiveUpgrade_v2();
-		passive2.setCost(100);
+		passive2.setCost(800);
 		passive2.setDesc("You properly understand coding syntax and create a second program to optimize. (Increases passive clicks by five).");
 		passive2.setName("Execution Optimizer"); //fourth
 		passive2.setCPS(5);
 		
 		passive3 = new PassiveUpgrade_v2();
-		passive3.setCost(500);
+		passive3.setCost(4000);
 		passive3.setDesc("You install an ActionKey script that clicks in the background for you (Increases passive clicks by 20).");
 		passive3.setName("ActionKey Script"); //sixth
 		passive3.setCPS(20);
