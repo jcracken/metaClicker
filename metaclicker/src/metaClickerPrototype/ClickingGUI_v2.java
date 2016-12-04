@@ -525,6 +525,9 @@ public class ClickingGUI_v2 extends JFrame{
 			if (user.getCounter() >= passive4.getCost()) {
 				passive4Panel.setVisible(true);
 			}
+			if (user.getCounter() >= passive6.getCost()) {
+				passive6Panel.setVisible(true);
+			}
 			if (user.getCounter() >= passive5.getCost()) {
 				passive5Panel.setVisible(true);
 			}
