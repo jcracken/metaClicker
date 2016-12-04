@@ -119,11 +119,11 @@ public class ClickingGUI_v2 extends JFrame{
 					}
 					else
 						endGame++;
-					if(endGame >= 1200) {
+					if(endGame >= 600) {
 						JOptionPane.showMessageDialog(null, "You exterminated the xenomorphs and feasted on their corpses. Winner is you!!!", "You Win", JOptionPane.INFORMATION_MESSAGE);
 						//win state, let player continue or exit out?
 					}
-					else if (endGame >= 600)
+					else if (endGame >= 300)
 						harambePls = true;
 						
 				}
@@ -204,6 +204,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.passive1Panel = new JPanel(new BorderLayout());
 		this.passive1Panel.add(new JLabel(passive1.getName()), BorderLayout.WEST);
+		this.passive1Image = new ImagePanel("http://i.imgur.com/oiuZrBt.png");
+		this.passive1Panel.add(active1Image, BorderLayout.CENTER);
 		this.passive1Desc = new JTextArea(2,10);
 		this.passive1Desc.setEditable(false);
 		this.passive1Desc.setText(passive1.getDesc());
@@ -212,6 +214,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive1Button = new JButton(this.passive1.getCost() + " Clicks");
 		this.passive1Button.addActionListener(new ButtonListener());
 		this.passive1Panel.add(passive1Button, BorderLayout.EAST);
+		this.passive1Panel.setBackground(Color.WHITE);
 		if(user.getCPS() >= passive1.getCPS()){
 			this.passive1Panel.setVisible(true);
 			this.passive1Button.setVisible(false);
@@ -222,6 +225,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.active2Panel = new JPanel(new BorderLayout());
 		this.active2Panel.add(new JLabel(active2.getName()), BorderLayout.WEST);
+		this.active2Image = new ImagePanel("http://i.imgur.com/rrTSIzR.png");
+		this.active2Panel.add(active1Image, BorderLayout.CENTER);
 		this.active2Desc = new JTextArea(2,10);
 		this.active2Desc.setEditable(false);
 		this.active2Desc.setText(active2.getDesc());
@@ -230,6 +235,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active2Button = new JButton(this.active2.getCost() + " Clicks");
 		this.active2Button.addActionListener(new ButtonListener());
 		this.active2Panel.add(active2Button, BorderLayout.EAST);
+		this.active2Panel.setBackground(Color.WHITE);
 		if(user.getMultiplier() >= active2.getMult()){
 			this.active2Panel.setVisible(true);
 			this.active2Button.setVisible(false);
@@ -240,6 +246,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.passive2Panel = new JPanel(new BorderLayout());
 		this.passive2Panel.add(new JLabel(passive2.getName()), BorderLayout.WEST);
+		this.passive2Image = new ImagePanel("http://i.imgur.com/5R70QbL.jpg");
+		this.passive2Panel.add(active1Image, BorderLayout.CENTER);
 		this.passive2Desc = new JTextArea(2,10);
 		this.passive2Desc.setEditable(false);
 		this.passive2Desc.setText(passive2.getDesc());
@@ -248,6 +256,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive2Button = new JButton(this.passive2.getCost() + " Clicks");
 		this.passive2Button.addActionListener(new ButtonListener());
 		this.passive2Panel.add(passive2Button, BorderLayout.EAST);
+		this.passive2Panel.setBackground(Color.WHITE);
 		if(user.getCPS() >= passive2.getCPS()){
 			this.passive2Panel.setVisible(true);
 			this.passive2Button.setVisible(false);
@@ -258,6 +267,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.active3Panel = new JPanel(new BorderLayout());
 		this.active3Panel.add(new JLabel(active3.getName()), BorderLayout.WEST);
+		this.active3Image = new ImagePanel("http://i.imgur.com/Pk9mXtE.jpg");
+		this.active3Panel.add(active1Image, BorderLayout.CENTER);
 		this.active3Desc = new JTextArea(2,10);
 		this.active3Desc.setEditable(false);
 		this.active3Desc.setText(active3.getDesc());
@@ -266,6 +277,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active3Button = new JButton(this.active3.getCost() + " Clicks");
 		this.active3Button.addActionListener(new ButtonListener());
 		this.active3Panel.add(active3Button, BorderLayout.EAST);
+		this.active3Panel.setBackground(Color.WHITE);
 		if(user.getMultiplier() >= active3.getMult()){
 			this.active3Panel.setVisible(true);
 			this.active3Button.setVisible(false);
@@ -276,6 +288,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.passive3Panel = new JPanel(new BorderLayout());
 		this.passive3Panel.add(new JLabel(passive3.getName()), BorderLayout.WEST);
+		this.passive3Image = new ImagePanel("http://i.imgur.com/fDcFtot.jpg");
+		this.passive3Panel.add(active1Image, BorderLayout.CENTER);
 		this.passive3Desc = new JTextArea(2,10);
 		this.passive3Desc.setEditable(false);
 		this.passive3Desc.setText(passive3.getDesc());
@@ -284,6 +298,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive3Button = new JButton(this.passive3.getCost() + " Clicks");
 		this.passive3Button.addActionListener(new ButtonListener());
 		this.passive3Panel.add(passive3Button, BorderLayout.EAST);
+		this.passive3Panel.setBackground(Color.WHITE);
 		if(user.getCPS() >= passive3.getCPS()){
 			this.passive3Panel.setVisible(true);
 			this.passive3Button.setVisible(false);
@@ -294,6 +309,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.active4Panel = new JPanel(new BorderLayout());
 		this.active4Panel.add(new JLabel(active4.getName()), BorderLayout.WEST);
+		this.active4Image = new ImagePanel("http://i.imgur.com/6RPF9Vx.jpg");
+		this.active4Panel.add(active1Image, BorderLayout.CENTER);
 		this.active4Desc = new JTextArea(2,10);
 		this.active4Desc.setEditable(false);
 		this.active4Desc.setText(active4.getDesc());
@@ -302,6 +319,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active4Button = new JButton(this.active4.getCost() + " Clicks");
 		this.active4Button.addActionListener(new ButtonListener());
 		this.active4Panel.add(active4Button, BorderLayout.EAST);
+		this.active4Panel.setBackground(Color.WHITE);
 		if(user.getMultiplier() >= active4.getMult()){
 			this.active4Panel.setVisible(true);
 			this.active4Button.setVisible(false);
@@ -312,6 +330,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.passive4Panel = new JPanel(new BorderLayout());
 		this.passive4Panel.add(new JLabel(passive4.getName()), BorderLayout.WEST);
+		this.passive4Image = new ImagePanel("http://i.imgur.com/xcDWs0a.png");
+		this.passive4Panel.add(active1Image, BorderLayout.CENTER);
 		this.passive4Desc = new JTextArea(2,10);
 		this.passive4Desc.setEditable(false);
 		this.passive4Desc.setText(passive4.getDesc());
@@ -320,6 +340,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive4Button = new JButton(this.passive4.getCost() + " Clicks");
 		this.passive4Button.addActionListener(new ButtonListener());
 		this.passive4Panel.add(passive4Button, BorderLayout.EAST);
+		this.passive4Panel.setBackground(Color.WHITE);
 		if(user.getCPS() >= passive4.getCPS()){
 			this.passive4Panel.setVisible(true);
 			this.passive4Button.setVisible(false);
@@ -330,6 +351,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.active5Panel = new JPanel(new BorderLayout());
 		this.active5Panel.add(new JLabel(active5.getName()), BorderLayout.WEST);
+		this.active5Image = new ImagePanel("http://i.imgur.com/gwYDSm6.jpg");
+		this.active5Panel.add(active1Image, BorderLayout.CENTER);
 		this.active5Desc = new JTextArea(2,10);
 		this.active5Desc.setEditable(false);
 		this.active5Desc.setText(active5.getDesc());
@@ -338,6 +361,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active5Button = new JButton(this.active5.getCost() + " Clicks");
 		this.active5Button.addActionListener(new ButtonListener());
 		this.active5Panel.add(active5Button, BorderLayout.EAST);
+		this.active5Panel.setBackground(Color.WHITE);
 		if(user.getMultiplier() >= active5.getMult()){
 			this.active5Panel.setVisible(true);
 			this.active5Button.setVisible(false);
@@ -348,6 +372,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.passive6Panel = new JPanel(new BorderLayout());
 		this.passive6Panel.add(new JLabel(passive6.getName()), BorderLayout.WEST);
+		this.passive6Image = new ImagePanel("http://i.imgur.com/FSRXOqA.jpg");
+		this.passive6Panel.add(active1Image, BorderLayout.CENTER);
 		this.passive6Desc = new JTextArea(2,10);
 		this.passive6Desc.setEditable(false);
 		this.passive6Desc.setText(passive6.getDesc());
@@ -356,6 +382,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive6Button = new JButton(this.passive6.getCost() + " Clicks");
 		this.passive6Button.addActionListener(new ButtonListener());
 		this.passive6Panel.add(passive6Button, BorderLayout.EAST);
+		this.passive6Panel.setBackground(Color.WHITE);
 		if(user.getCPS() <= passive6.getCPS()){
 			this.passive6Panel.setVisible(true);
 			this.passive6Button.setVisible(false);
@@ -366,6 +393,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		this.passive5Panel = new JPanel(new BorderLayout());
 		this.passive5Panel.add(new JLabel(passive5.getName()), BorderLayout.WEST);
+		this.passive5Image = new ImagePanel("http://i.imgur.com/CTaGfd3.jpg");
+		this.passive5Panel.add(active1Image, BorderLayout.CENTER);
 		this.passive5Desc = new JTextArea(2,10);
 		this.passive5Desc.setEditable(false);
 		this.passive5Desc.setText(passive5.getDesc());
@@ -374,6 +403,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive5Button = new JButton(this.passive5.getCost() + " Clicks");
 		this.passive5Button.addActionListener(new ButtonListener());
 		this.passive5Panel.add(passive5Button, BorderLayout.EAST);
+		this.passive5Panel.setBackground(Color.WHITE);
 		if(user.getCPS() <= passive5.getCPS()){
 			this.passive5Panel.setVisible(true);
 			this.passive5Button.setVisible(false);
@@ -429,8 +459,8 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		passive3 = new PassiveUpgrade_v2();
 		passive3.setCost(4000);
-		passive3.setDesc("You install an ActionKey script that clicks in the background for you (Increases passive clicks by 20).");
-		passive3.setName("ActionKey Script"); //sixth
+		passive3.setDesc("You install an AutoHotKey script that clicks in the background for you (Increases passive clicks by 20).");
+		passive3.setName("AutoHotKey Script"); //sixth
 		passive3.setCPS(20);
 		
 		passive4 = new PassiveUpgrade_v2();
