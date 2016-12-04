@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -21,6 +22,7 @@ public class ImagePanel extends JPanel{
             // handle exception...
        }
        setBackground(Color.WHITE);
+       setVisible(true);
     }
 
     @Override

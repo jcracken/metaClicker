@@ -115,7 +115,7 @@ public class ClickingGUI_v2 extends JFrame{
 				{
 					if(user.getCounter() <= 0.0) {
 						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You dumbass!", "Game Over", JOptionPane.ERROR_MESSAGE);
-						//end the game somehow
+						System.exit(0);
 					}
 					else
 						endGame++;
@@ -192,7 +192,7 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active1Button.addActionListener(new ButtonListener());
 		this.active1Panel.add(active1Button, BorderLayout.EAST);
 		this.active1Panel.setBackground(Color.WHITE);
-		//this.active1Panel.add(active1Image, BorderLayout.NORTH);
+		this.active1Panel.add(active1Image, BorderLayout.NORTH);
 		this.active1Panel.setVisible(false);
 		if(user.getMultiplier() >= active1.getMult()){
 			this.active1Panel.setVisible(true);
