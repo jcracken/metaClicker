@@ -3,9 +3,8 @@ package metaClickerPrototype;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ClickingGUI_v2 extends JFrame{
 	
@@ -34,6 +33,7 @@ public class ClickingGUI_v2 extends JFrame{
 	PassiveUpgrade_v2 passive3;
 	PassiveUpgrade_v2 passive4;
 	PassiveUpgrade_v2 passive5;
+	PassiveUpgrade_v2 passive6;
 	
 	// Upgrade panels
 	JPanel active1Panel;
@@ -66,6 +66,11 @@ public class ClickingGUI_v2 extends JFrame{
 	JPanel passive5Panel;
 	JButton passive5Button;
 	JTextArea passive5Desc;
+	JPanel passive6Panel;
+	JButton passive6Button;
+	JTextArea passive6Desc;
+	
+	Timer timer = new Timer();
 	
 	public ClickingGUI_v2() {
 		//super("MetaClicker: The Clickening");
@@ -138,58 +143,6 @@ public class ClickingGUI_v2 extends JFrame{
 		this.active1Panel.setVisible(false);
 		this.upgradePanel.add(this.active1Panel);
 		
-		this.active2Panel = new JPanel(new BorderLayout());
-		this.active2Panel.add(new JLabel(active2.getName()), BorderLayout.WEST);
-		this.active2Desc = new JTextArea(2,10);
-		this.active2Desc.setEditable(false);
-		this.active2Desc.setText(active2.getDesc());
-		this.active2Desc.setLineWrap(true);
-		this.active2Panel.add(active2Desc, BorderLayout.SOUTH);
-		this.active2Button = new JButton(this.active2.getCost() + " Clicks");
-		this.active2Button.addActionListener(new ButtonListener());
-		this.active2Panel.add(active2Button, BorderLayout.EAST);
-		this.active2Panel.setVisible(false);
-		this.upgradePanel.add(this.active2Panel);
-		
-		this.active3Panel = new JPanel(new BorderLayout());
-		this.active3Panel.add(new JLabel(active3.getName()), BorderLayout.WEST);
-		this.active3Desc = new JTextArea(2,10);
-		this.active3Desc.setEditable(false);
-		this.active3Desc.setText(active3.getDesc());
-		this.active3Desc.setLineWrap(true);
-		this.active3Panel.add(active3Desc, BorderLayout.SOUTH);
-		this.active3Button = new JButton(this.active3.getCost() + " Clicks");
-		this.active3Button.addActionListener(new ButtonListener());
-		this.active3Panel.add(active3Button, BorderLayout.EAST);
-		this.active3Panel.setVisible(false);
-		this.upgradePanel.add(this.active3Panel);
-		
-		this.active4Panel = new JPanel(new BorderLayout());
-		this.active4Panel.add(new JLabel(active4.getName()), BorderLayout.WEST);
-		this.active4Desc = new JTextArea(2,10);
-		this.active4Desc.setEditable(false);
-		this.active4Desc.setText(active4.getDesc());
-		this.active4Desc.setLineWrap(true);
-		this.active4Panel.add(active4Desc, BorderLayout.SOUTH);
-		this.active4Button = new JButton(this.active4.getCost() + " Clicks");
-		this.active4Button.addActionListener(new ButtonListener());
-		this.active4Panel.add(active4Button, BorderLayout.EAST);
-		this.active4Panel.setVisible(false);
-		this.upgradePanel.add(this.active4Panel);
-		
-		this.active5Panel = new JPanel(new BorderLayout());
-		this.active5Panel.add(new JLabel(active5.getName()), BorderLayout.WEST);
-		this.active5Desc = new JTextArea(2,10);
-		this.active5Desc.setEditable(false);
-		this.active5Desc.setText(active5.getDesc());
-		this.active5Desc.setLineWrap(true);
-		this.active5Panel.add(active5Desc, BorderLayout.SOUTH);
-		this.active5Button = new JButton(this.active5.getCost() + " Clicks");
-		this.active5Button.addActionListener(new ButtonListener());
-		this.active5Panel.add(active5Button, BorderLayout.EAST);
-		this.active5Panel.setVisible(false);
-		this.upgradePanel.add(this.active5Panel);
-		
 		this.passive1Panel = new JPanel(new BorderLayout());
 		this.passive1Panel.add(new JLabel(passive1.getName()), BorderLayout.WEST);
 		this.passive1Desc = new JTextArea(2,10);
@@ -202,6 +155,19 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive1Panel.add(passive1Button, BorderLayout.EAST);
 		this.passive1Panel.setVisible(false);
 		this.upgradePanel.add(this.passive1Panel);
+		
+		this.active2Panel = new JPanel(new BorderLayout());
+		this.active2Panel.add(new JLabel(active2.getName()), BorderLayout.WEST);
+		this.active2Desc = new JTextArea(2,10);
+		this.active2Desc.setEditable(false);
+		this.active2Desc.setText(active2.getDesc());
+		this.active2Desc.setLineWrap(true);
+		this.active2Panel.add(active2Desc, BorderLayout.SOUTH);
+		this.active2Button = new JButton(this.active2.getCost() + " Clicks");
+		this.active2Button.addActionListener(new ButtonListener());
+		this.active2Panel.add(active2Button, BorderLayout.EAST);
+		this.active2Panel.setVisible(false);
+		this.upgradePanel.add(this.active2Panel);
 		
 		this.passive2Panel = new JPanel(new BorderLayout());
 		this.passive2Panel.add(new JLabel(passive2.getName()), BorderLayout.WEST);
@@ -216,6 +182,19 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive2Panel.setVisible(false);
 		this.upgradePanel.add(this.passive2Panel);
 		
+		this.active3Panel = new JPanel(new BorderLayout());
+		this.active3Panel.add(new JLabel(active3.getName()), BorderLayout.WEST);
+		this.active3Desc = new JTextArea(2,10);
+		this.active3Desc.setEditable(false);
+		this.active3Desc.setText(active3.getDesc());
+		this.active3Desc.setLineWrap(true);
+		this.active3Panel.add(active3Desc, BorderLayout.SOUTH);
+		this.active3Button = new JButton(this.active3.getCost() + " Clicks");
+		this.active3Button.addActionListener(new ButtonListener());
+		this.active3Panel.add(active3Button, BorderLayout.EAST);
+		this.active3Panel.setVisible(false);
+		this.upgradePanel.add(this.active3Panel);
+		
 		this.passive3Panel = new JPanel(new BorderLayout());
 		this.passive3Panel.add(new JLabel(passive3.getName()), BorderLayout.WEST);
 		this.passive3Desc = new JTextArea(2,10);
@@ -229,6 +208,19 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive3Panel.setVisible(false);
 		this.upgradePanel.add(this.passive3Panel);
 		
+		this.active4Panel = new JPanel(new BorderLayout());
+		this.active4Panel.add(new JLabel(active4.getName()), BorderLayout.WEST);
+		this.active4Desc = new JTextArea(2,10);
+		this.active4Desc.setEditable(false);
+		this.active4Desc.setText(active4.getDesc());
+		this.active4Desc.setLineWrap(true);
+		this.active4Panel.add(active4Desc, BorderLayout.SOUTH);
+		this.active4Button = new JButton(this.active4.getCost() + " Clicks");
+		this.active4Button.addActionListener(new ButtonListener());
+		this.active4Panel.add(active4Button, BorderLayout.EAST);
+		this.active4Panel.setVisible(false);
+		this.upgradePanel.add(this.active4Panel);
+		
 		this.passive4Panel = new JPanel(new BorderLayout());
 		this.passive4Panel.add(new JLabel(passive4.getName()), BorderLayout.WEST);
 		this.passive4Desc = new JTextArea(2,10);
@@ -241,6 +233,32 @@ public class ClickingGUI_v2 extends JFrame{
 		this.passive4Panel.add(passive4Button, BorderLayout.EAST);
 		this.passive4Panel.setVisible(false);
 		this.upgradePanel.add(this.passive4Panel);
+		
+		this.active5Panel = new JPanel(new BorderLayout());
+		this.active5Panel.add(new JLabel(active5.getName()), BorderLayout.WEST);
+		this.active5Desc = new JTextArea(2,10);
+		this.active5Desc.setEditable(false);
+		this.active5Desc.setText(active5.getDesc());
+		this.active5Desc.setLineWrap(true);
+		this.active5Panel.add(active5Desc, BorderLayout.SOUTH);
+		this.active5Button = new JButton(this.active5.getCost() + " Clicks");
+		this.active5Button.addActionListener(new ButtonListener());
+		this.active5Panel.add(active5Button, BorderLayout.EAST);
+		this.active5Panel.setVisible(false);
+		this.upgradePanel.add(this.active5Panel);
+		
+		this.passive6Panel = new JPanel(new BorderLayout());
+		this.passive6Panel.add(new JLabel(passive6.getName()), BorderLayout.WEST);
+		this.passive6Desc = new JTextArea(2,10);
+		this.passive6Desc.setEditable(false);
+		this.passive6Desc.setText(passive6.getDesc());
+		this.passive6Desc.setLineWrap(true);
+		this.passive6Panel.add(passive6Desc, BorderLayout.SOUTH);
+		this.passive6Button = new JButton(this.passive6.getCost() + " Clicks");
+		this.passive6Button.addActionListener(new ButtonListener());
+		this.passive6Panel.add(passive6Button, BorderLayout.EAST);
+		this.passive6Panel.setVisible(false);
+		this.upgradePanel.add(this.passive6Panel);
 		
 		this.passive5Panel = new JPanel(new BorderLayout());
 		this.passive5Panel.add(new JLabel(passive5.getName()), BorderLayout.WEST);
@@ -317,6 +335,12 @@ public class ClickingGUI_v2 extends JFrame{
 		passive5.setDesc("Harambe for the assist! Gives you an edge on those alien bastards who shot up your ride (Increases passive clicks to -150).");
 		passive5.setName("clicks out for Harambe"); //eleven
 		passive5.setCPS(86);
+		
+		passive6 = new PassiveUpgrade_v2();
+		passive6.setCost(500000);
+		passive6.setDesc("KILL KILL KILL (Decreases passive clicks to -200).");
+		passive6.setName("Xenomorph War"); //ten
+		passive6.setCPS(-236); //if this upgrade is bought and hits zero, you lose. otherwise, you get a win dialog after 20 min.
 		
 	}
 	
