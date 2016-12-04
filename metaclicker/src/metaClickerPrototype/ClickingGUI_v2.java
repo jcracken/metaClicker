@@ -5,6 +5,9 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.io.*;
+import java.net.URL;
+import javax.sound.sampled.*;
 
 public class ClickingGUI_v2 extends JFrame{
 	
@@ -72,7 +75,7 @@ public class ClickingGUI_v2 extends JFrame{
 	
 	Timer timer = new Timer();
 	int endGame = 0;
-	boolean harambePls = false;
+	boolean harambePls = false;      
 	
 	public ClickingGUI_v2() {
 		//super("MetaClicker: The Clickening");
@@ -394,7 +397,23 @@ public class ClickingGUI_v2 extends JFrame{
 					user.setMultiplier(active1.getMult());
 					user.incrementUpgrade();
 					active1Button.setVisible(false);
-				}
+					try {
+				         // Open an audio input stream.
+				         URL url = this.getClass().getClassLoader().getResource("upgrade.wav");
+				         AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+				         // Get a sound clip resource.
+				         Clip clip = AudioSystem.getClip();
+				         // Open audio clip and load samples from the audio input stream.
+				         clip.open(audioIn);
+				         clip.start();
+				      } catch (UnsupportedAudioFileException i) {
+				         i.printStackTrace();
+				      } catch (IOException i) {
+				         i.printStackTrace();
+				      } catch (LineUnavailableException i) {
+				         i.printStackTrace();
+				      }
+				   }
 				else {
 					JOptionPane.showMessageDialog(null, "You do not have enough clicks.", "Invalid", JOptionPane.ERROR_MESSAGE);
 				}
@@ -493,7 +512,7 @@ public class ClickingGUI_v2 extends JFrame{
 				if (user.removeClicks(passive6.getCost())) {
 					user.setCPS(passive6.getCPS());
 					user.incrementUpgrade();
-					passive5Button.setVisible(false);
+					passive6Button.setVisible(false);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "You do not have enough clicks.", "Invalid", JOptionPane.ERROR_MESSAGE);
