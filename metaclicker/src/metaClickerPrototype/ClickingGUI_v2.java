@@ -143,6 +143,7 @@ public class ClickingGUI_v2 extends JFrame{
 		upgradeList = new JScrollPane(upgradePanel);
 		upgradeList.setPreferredSize(new Dimension(225,225));
 		upgradeArea = new JPanel(new BorderLayout());
+		upgradeArea.setBackground(Color.WHITE);
 		upgradeArea.add(new JLabel("Upgrades", SwingConstants.CENTER), BorderLayout.PAGE_START);
 		upgradeArea.add(upgradeList);
 		
@@ -154,6 +155,7 @@ public class ClickingGUI_v2 extends JFrame{
 		clickLoad = new JButton("Load");
 		clickLoad.addActionListener(new ButtonListener());
 		clickArea = new JPanel(new BorderLayout());
+		clickArea.setBackground(Color.WHITE);
 		clickArea.setPreferredSize(new Dimension(100,100));
 		clickArea.add(new JLabel("Clicks", SwingConstants.CENTER), BorderLayout.PAGE_START);		
 		clickArea.add(clickMe, BorderLayout.CENTER);
@@ -167,6 +169,7 @@ public class ClickingGUI_v2 extends JFrame{
 		statisticTextField.setEditable(false);
 		//statisticTextField.setText(user.getStatistics());  //UNCOMMENT IF WANT INITIALIZED. LEAVE COMMENTED IF WANT ONLY AFTER FIRST CLICK
 		statisticArea = new JPanel(new BorderLayout());
+		statisticArea.setBackground(Color.WHITE);
 		statisticArea.add(new JLabel("Statistics", SwingConstants.CENTER), BorderLayout.PAGE_START);
 		statisticArea.add(statisticTextField);
 		
@@ -178,6 +181,7 @@ public class ClickingGUI_v2 extends JFrame{
 		
 	private void createUpgradePanels() {
 		
+		this.upgradePanel.setBackground(Color.WHITE);
 
 		this.active1Panel = new JPanel(new BorderLayout());
 		this.active1Panel.add(new JLabel(active1.getName()), BorderLayout.WEST);
