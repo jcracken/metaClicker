@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import metaClickerPrototype.ClickingGUI_v2.ButtonListener;
+//import metaClickerPrototype.ClickingGUI_v2.ButtonListener;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -447,6 +447,7 @@ public class ClickingGUI_v2 extends JFrame{
 			}
 			else if (source.equals(clickLoad)) {
 				user = Player_v2.loadGame();
+				createUpgradePanels();
 			}
 			else if (source.equals(active1Button)) {
 				if (user.removeClicks(active1.getCost())) {
