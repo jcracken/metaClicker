@@ -155,7 +155,7 @@ public class ClickingGUI_v2 extends JFrame{
         mainMenuClip.open(inputStream);
         mainMenuClip.loop(mainMenuClip.LOOP_CONTINUOUSLY);
         
-       // clip.close();
+       // clip.close();//
 		
 		playGameButton = new JButton("Start New Game");
 		clickLoad = new JButton("Load Game");
