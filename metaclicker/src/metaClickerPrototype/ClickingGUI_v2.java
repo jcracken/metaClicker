@@ -552,6 +552,7 @@ public class ClickingGUI_v2 extends JFrame{
 			else if (source.equals(playGameButton)) {
 				menuFrame.setVisible(false);
 				topFrame.setVisible(true);
+				createUpgradePanels();
 				clickerClip = null;
 				try {
 					clickerClip = AudioSystem.getClip();
@@ -581,6 +582,7 @@ public class ClickingGUI_v2 extends JFrame{
 				user = Player_v2.loadGame();
 				menuFrame.setVisible(false);
 				topFrame.setVisible(true);
+				createUpgradePanels();
 				clickerClip = null;
 				try {
 					clickerClip = AudioSystem.getClip();
