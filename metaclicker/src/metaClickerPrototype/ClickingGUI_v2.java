@@ -148,7 +148,7 @@ public class ClickingGUI_v2 extends JFrame{
 	public void buildMainMenu() throws Exception{
 		Clip clip = AudioSystem.getClip();
         AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-          new File("main_menu.wav"));
+          new URL("https://raw.githubusercontent.com/jcracken/metaClicker/master/main_menu.wav"));
         clip.open(inputStream);
         clip.start(); 
 		
@@ -558,7 +558,7 @@ public class ClickingGUI_v2 extends JFrame{
 		        AudioInputStream inputStream = null;
 				try {
 					inputStream = AudioSystem.getAudioInputStream(
-					  new File("Clicker.wav"));
+					  new URL("https://github.com/jcracken/metaClicker/raw/master/Clicker.wav"));
 				} catch (UnsupportedAudioFileException | IOException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -586,7 +586,7 @@ public class ClickingGUI_v2 extends JFrame{
 		        AudioInputStream inputStream = null;
 				try {
 					inputStream = AudioSystem.getAudioInputStream(
-					  new File("Clicker.wav"));
+					  new URL("https://github.com/jcracken/metaClicker/raw/master/Clicker.wav"));
 				} catch (UnsupportedAudioFileException | IOException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
