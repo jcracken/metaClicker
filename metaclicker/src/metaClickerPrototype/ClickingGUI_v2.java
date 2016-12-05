@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+import javax.sound.sampled.*;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -99,6 +100,8 @@ public class ClickingGUI_v2 extends JFrame{
 	ImagePanel passive6Image;
 	
 	public ClickingGUI_v2() {
+		
+		
 		//super("MetaClicker: The Clickening");
 		menuFrame = new JFrame("MetaClicker: The Clickening");
 		topFrame = new JFrame("MetaClicker: The Clickening");
@@ -143,6 +146,12 @@ public class ClickingGUI_v2 extends JFrame{
 	}
 
 	public void buildMainMenu(){
+		Clip clip = AudioSystem.getClip();
+        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+          new File("main_menu.wav"));
+        clip.open(inputStream);
+        clip.start(); 
+		
 		playGameButton = new JButton("Play Game");
 		clickLoad = new JButton("Load Game");
 		
@@ -539,12 +548,56 @@ public class ClickingGUI_v2 extends JFrame{
 				menuFrame.setVisible(false);
 				topFrame.setVisible(true);
 				createUpgradePanels();
+				Clip clip = null;
+				try {
+					clip = AudioSystem.getClip();
+				} catch (LineUnavailableException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+		        AudioInputStream inputStream = null;
+				try {
+					inputStream = AudioSystem.getAudioInputStream(
+					  new File("Clicker.wav"));
+				} catch (UnsupportedAudioFileException | IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+		        try {
+					clip.open(inputStream);
+				} catch (LineUnavailableException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		        clip.start();
 			}
 			else if (source.equals(clickLoad)) {
 				user = Player_v2.loadGame();
 				menuFrame.setVisible(false);
 				topFrame.setVisible(true);
 				createUpgradePanels();
+				Clip clip = null;
+				try {
+					clip = AudioSystem.getClip();
+				} catch (LineUnavailableException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+		        AudioInputStream inputStream = null;
+				try {
+					inputStream = AudioSystem.getAudioInputStream(
+					  new File("Clicker.wav"));
+				} catch (UnsupportedAudioFileException | IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+		        try {
+					clip.open(inputStream);
+				} catch (LineUnavailableException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		        clip.start();
 			}
 			else if (source.equals(active1Button)) {
 				if (user.removeClicks(active1.getCost())) {
