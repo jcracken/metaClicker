@@ -126,7 +126,7 @@ public class ClickingGUI_v2 extends JFrame{
 				{
 					if(user.getCounter() <= 0.0) {
 						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You dumbass!", "Game Over", JOptionPane.ERROR_MESSAGE);
-						//end the game somehow
+						System.exit(0);
 					}
 					else
 						endGame++;
@@ -651,6 +651,15 @@ public class ClickingGUI_v2 extends JFrame{
 					user.setCPS(passive6.getCPS());
 					user.incrementUpgrade();
 					passive6Button.setVisible(false);
+					active1Button.setVisible(false);
+					active2Button.setVisible(false);
+					active3Button.setVisible(false);
+					active4Button.setVisible(false);
+					active5Button.setVisible(false);
+					passive1Button.setVisible(false);
+					passive2Button.setVisible(false);
+					passive3Button.setVisible(false);
+					passive4Button.setVisible(false);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "You do not have enough clicks.", "Invalid", JOptionPane.ERROR_MESSAGE);
