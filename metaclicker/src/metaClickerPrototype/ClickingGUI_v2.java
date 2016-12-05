@@ -650,6 +650,7 @@ public class ClickingGUI_v2 extends JFrame{
 				if (user.removeClicks(passive6.getCost())) {
 					user.setCPS(passive6.getCPS());
 					user.incrementUpgrade();
+					passive6.upgradePurchased = true;
 					passive6Button.setVisible(false);
 					active1Button.setVisible(false);
 					active2Button.setVisible(false);
