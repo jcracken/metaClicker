@@ -128,7 +128,7 @@ public class ClickingGUI_v2 extends JFrame{
 				if(passive6.upgradePurchased)
 				{
 					if(user.getCounter() <= 0.0) {
-						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You dumbass!", "Game Over", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You idiot!", "Game Over", JOptionPane.ERROR_MESSAGE);
 						System.exit(0);
 					}
 					else
@@ -518,7 +518,7 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		passive5 = new PassiveUpgrade_v2();
 		passive5.setCost(0);
-		passive5.setDesc("Harambe for the assist! Gives you an edge on those alien bastards who shot up your ride (Increases passive clicks to -1500).");
+		passive5.setDesc("Harambe for the assist! Gives you an edge on those aliens who shot up your ride (Increases passive clicks to -1500).");
 		passive5.setName("clicks out for Harambe"); //eleven
 		passive5.setCPS(-1500);
 		
