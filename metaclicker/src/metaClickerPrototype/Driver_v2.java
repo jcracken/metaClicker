@@ -5,7 +5,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Driver_v2 {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
