@@ -110,7 +110,7 @@ public class ClickingGUI_v2 extends JFrame{
 		//this.setSize(800,600);
 		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menuFrame.setLayout(new GridLayout(2,1));
-		menuFrame.setSize(600, 800);
+		menuFrame.setSize(300, 300);
 		topFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		topFrame.setLayout(new GridLayout(1,3));
 		topFrame.setSize(600, 800);
