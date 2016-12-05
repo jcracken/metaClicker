@@ -99,7 +99,7 @@ public class ClickingGUI_v2 extends JFrame{
 	ImagePanel passive5Image;
 	ImagePanel passive6Image;
 	
-	public ClickingGUI_v2() {
+	public ClickingGUI_v2() throws Exception {
 		
 		
 		//super("MetaClicker: The Clickening");
@@ -145,7 +145,7 @@ public class ClickingGUI_v2 extends JFrame{
 		}, 0, 1000);
 	}
 
-	public void buildMainMenu(){
+	public void buildMainMenu() throws Exception{
 		Clip clip = AudioSystem.getClip();
         AudioInputStream inputStream = AudioSystem.getAudioInputStream(
           new File("main_menu.wav"));
@@ -174,7 +174,7 @@ public class ClickingGUI_v2 extends JFrame{
 		menuFrame.add(clickLoad);
 	}
 	
-	public void buildGUI() {
+	public void buildGUI()  throws Exception{
 		
 		// User
 		user = new Player_v2();
