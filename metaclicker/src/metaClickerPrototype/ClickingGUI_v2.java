@@ -238,7 +238,7 @@ public class ClickingGUI_v2 extends JFrame{
 		}
 		else
 			this.active1Panel.setVisible(false);
-		this.upgradePanel.add(this.active1Panel);
+		this.upgradePanel.add(active1Panel);
 		
 		this.passive1Panel = new JPanel(new BorderLayout());
 		this.passive1Panel.add(new JLabel(passive1.getName()), BorderLayout.WEST);
@@ -538,6 +538,7 @@ public class ClickingGUI_v2 extends JFrame{
 			else if (source.equals(playGameButton)) {
 				menuFrame.setVisible(false);
 				topFrame.setVisible(true);
+				createUpgradePanels();
 			}
 			else if (source.equals(clickLoad)) {
 				user = Player_v2.loadGame();
