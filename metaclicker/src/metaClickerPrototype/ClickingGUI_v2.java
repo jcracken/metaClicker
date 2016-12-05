@@ -9,75 +9,82 @@ import javax.sound.sampled.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.io.*;
+//import sun.audio.*;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class ClickingGUI_v2 extends JFrame{
 	
-	private JFrame topFrame;
-	private JFrame menuFrame;
+	Clip mainMenuClip;
+	Clip clickerClip;
+	Clip aliensClip;
+	JFrame topFrame;
+	JFrame menuFrame;
 	
-	private JButton playGameButton;
+	JPanel playGamePanel;
+	JButton playGameButton;
+	JPanel loadGamePanel;
+	JButton loadGameButton;
 	
-	private JPanel clickArea;
-	private JPanel statisticArea;
-	private JPanel upgradeArea;
-	private Player_v2 user;
+	JPanel clickArea;
+	JPanel statisticArea;
+	JPanel upgradeArea;
+	Player_v2 user;
 	
-	private JScrollPane upgradeList;
-	private JPanel upgradePanel;
-	private JButton clickMe;
-	private JButton clickSave;
-	private JButton clickLoad;
-	private JTextArea statisticTextField;
+	JScrollPane upgradeList;
+	JPanel upgradePanel;
+	JButton clickMe;
+	JButton clickSave;
+	JButton clickLoad;
+	JTextArea statisticTextField;
 	
 	// Upgrades
-	private ActiveUpgrade_v2 active1;
-	private ActiveUpgrade_v2 active2;
-	private ActiveUpgrade_v2 active3;
-	private ActiveUpgrade_v2 active4;
-	private ActiveUpgrade_v2 active5;
-	private PassiveUpgrade_v2 passive1;
-	private PassiveUpgrade_v2 passive2;
-	private PassiveUpgrade_v2 passive3;
-	private PassiveUpgrade_v2 passive4;
-	private PassiveUpgrade_v2 passive5;
-	private PassiveUpgrade_v2 passive6;
+	ActiveUpgrade_v2 active1;
+	ActiveUpgrade_v2 active2;
+	ActiveUpgrade_v2 active3;
+	ActiveUpgrade_v2 active4;
+	ActiveUpgrade_v2 active5;
+	PassiveUpgrade_v2 passive1;
+	PassiveUpgrade_v2 passive2;
+	PassiveUpgrade_v2 passive3;
+	PassiveUpgrade_v2 passive4;
+	PassiveUpgrade_v2 passive5;
+	PassiveUpgrade_v2 passive6;
 	
 	// Upgrade panels
-	private JPanel active1Panel;
-	private JButton active1Button;
-	private JTextArea active1Desc;
-	private JPanel active2Panel;
-	private JButton active2Button;
-	private JTextArea active2Desc;
-	private JPanel active3Panel;
-	private JButton active3Button;
-	private JTextArea active3Desc;
-	private JPanel active4Panel;
-	private JButton active4Button;
-	private JTextArea active4Desc;
-	private JPanel active5Panel;
-	private JButton active5Button;
-	private JTextArea active5Desc;
-	private JPanel passive1Panel;
-	private JButton passive1Button;
-	private JTextArea passive1Desc;
-	private JPanel passive2Panel;
-	private JButton passive2Button;
-	private JTextArea passive2Desc;
-	private JPanel passive3Panel;
-	private JButton passive3Button;
-	private JTextArea passive3Desc;
-	private JPanel passive4Panel;
-	private JButton passive4Button;
-	private JTextArea passive4Desc;
-	private JPanel passive5Panel;
-	private JButton passive5Button;
-	private JTextArea passive5Desc;
-	private JPanel passive6Panel;
-	private JButton passive6Button;
-	private JTextArea passive6Desc;
+	JPanel active1Panel;
+	JButton active1Button;
+	JTextArea active1Desc;
+	JPanel active2Panel;
+	JButton active2Button;
+	JTextArea active2Desc;
+	JPanel active3Panel;
+	JButton active3Button;
+	JTextArea active3Desc;
+	JPanel active4Panel;
+	JButton active4Button;
+	JTextArea active4Desc;
+	JPanel active5Panel;
+	JButton active5Button;
+	JTextArea active5Desc;
+	JPanel passive1Panel;
+	JButton passive1Button;
+	JTextArea passive1Desc;
+	JPanel passive2Panel;
+	JButton passive2Button;
+	JTextArea passive2Desc;
+	JPanel passive3Panel;
+	JButton passive3Button;
+	JTextArea passive3Desc;
+	JPanel passive4Panel;
+	JButton passive4Button;
+	JTextArea passive4Desc;
+	JPanel passive5Panel;
+	JButton passive5Button;
+	JTextArea passive5Desc;
+	JPanel passive6Panel;
+	JButton passive6Button;
+	JTextArea passive6Desc;
 	
 	Timer timer = new Timer();
 	int endGame = 0;
@@ -96,16 +103,14 @@ public class ClickingGUI_v2 extends JFrame{
 	ImagePanel passive5Image;
 	ImagePanel passive6Image;
 	
-	public ClickingGUI_v2() throws Exception {
-		
-		
+	public ClickingGUI_v2() throws Exception{
 		//super("MetaClicker: The Clickening");
 		menuFrame = new JFrame("MetaClicker: The Clickening");
 		topFrame = new JFrame("MetaClicker: The Clickening");
 		//this.setSize(800,600);
 		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menuFrame.setLayout(new GridLayout(2,1));
-		menuFrame.setSize(300,300);
+		menuFrame.setSize(600, 800);
 		topFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		topFrame.setLayout(new GridLayout(1,3));
 		topFrame.setSize(600, 800);
@@ -125,7 +130,7 @@ public class ClickingGUI_v2 extends JFrame{
 				if(passive6.upgradePurchased)
 				{
 					if(user.getCounter() <= 0.0) {
-						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You dumbass!", "Game Over", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You idiot!", "Game Over", JOptionPane.ERROR_MESSAGE);
 						System.exit(0);
 					}
 					else
@@ -143,13 +148,16 @@ public class ClickingGUI_v2 extends JFrame{
 	}
 
 	public void buildMainMenu() throws Exception{
-		Clip clip = AudioSystem.getClip();
-        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-          new URL("https://raw.githubusercontent.com/jcracken/metaClicker/master/main_menu.wav"));
-        clip.open(inputStream);
-        clip.start(); 
 		
-		playGameButton = new JButton("Play Game");
+		mainMenuClip = AudioSystem.getClip();
+        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+        		new URL("https://raw.githubusercontent.com/jcracken/metaClicker/master/main_menu.wav"));
+        mainMenuClip.open(inputStream);
+        mainMenuClip.loop(mainMenuClip.LOOP_CONTINUOUSLY);
+        
+       // clip.close();
+		
+		playGameButton = new JButton("Start New Game");
 		clickLoad = new JButton("Load Game");
 		
 		playGameButton.addActionListener(new ButtonListener());
@@ -169,10 +177,10 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		menuFrame.add(playGameButton);
 		menuFrame.add(clickLoad);
+		
 	}
 	
-	public void buildGUI()  throws Exception{
-		
+	public void buildGUI() throws Exception{
 		// User
 		user = new Player_v2();
 		
@@ -244,7 +252,7 @@ public class ClickingGUI_v2 extends JFrame{
 		}
 		else
 			this.active1Panel.setVisible(false);
-		this.upgradePanel.add(active1Panel);
+		this.upgradePanel.add(this.active1Panel);
 		
 		this.passive1Panel = new JPanel(new BorderLayout());
 		this.passive1Panel.add(new JLabel(passive1.getName()), BorderLayout.WEST);
@@ -515,7 +523,7 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		passive5 = new PassiveUpgrade_v2();
 		passive5.setCost(0);
-		passive5.setDesc("Harambe for the assist! Gives you an edge on those alien bastards who shot up your ride (Increases passive clicks to -1500).");
+		passive5.setDesc("Harambe for the assist! Gives you an edge on those aliens who shot up your ride (Increases passive clicks to -1500).");
 		passive5.setName("clicks out for Harambe"); //eleven
 		passive5.setCPS(-1500);
 		
@@ -527,10 +535,10 @@ public class ClickingGUI_v2 extends JFrame{
 		
 	}
 	
-	private class ButtonListener implements ActionListener {
+	private class ButtonListener implements ActionListener{
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e){
 			JButton source = (JButton)(e.getSource());
 			
 			if (source.equals(clickMe))
@@ -544,10 +552,9 @@ public class ClickingGUI_v2 extends JFrame{
 			else if (source.equals(playGameButton)) {
 				menuFrame.setVisible(false);
 				topFrame.setVisible(true);
-				createUpgradePanels();
-				Clip clip = null;
+				clickerClip = null;
 				try {
-					clip = AudioSystem.getClip();
+					clickerClip = AudioSystem.getClip();
 				} catch (LineUnavailableException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -555,27 +562,28 @@ public class ClickingGUI_v2 extends JFrame{
 		        AudioInputStream inputStream = null;
 				try {
 					inputStream = AudioSystem.getAudioInputStream(
-					  new URL("https://github.com/jcracken/metaClicker/raw/master/Clicker.wav"));
+							new URL("https://github.com/jcracken/metaClicker/raw/master/Clicker.wav"));
 				} catch (UnsupportedAudioFileException | IOException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 		        try {
-					clip.open(inputStream);
+		        	clickerClip.open(inputStream);
 				} catch (LineUnavailableException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-		        clip.start();
+		        clickerClip.loop(clickerClip.LOOP_CONTINUOUSLY); 
+		        mainMenuClip.stop();
+
 			}
 			else if (source.equals(clickLoad)) {
 				user = Player_v2.loadGame();
 				menuFrame.setVisible(false);
 				topFrame.setVisible(true);
-				createUpgradePanels();
-				Clip clip = null;
+				clickerClip = null;
 				try {
-					clip = AudioSystem.getClip();
+					clickerClip = AudioSystem.getClip();
 				} catch (LineUnavailableException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -583,18 +591,21 @@ public class ClickingGUI_v2 extends JFrame{
 		        AudioInputStream inputStream = null;
 				try {
 					inputStream = AudioSystem.getAudioInputStream(
-					  new URL("https://github.com/jcracken/metaClicker/raw/master/Clicker.wav"));
+							new URL("https://github.com/jcracken/metaClicker/raw/master/Clicker.wav"));
 				} catch (UnsupportedAudioFileException | IOException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 		        try {
-					clip.open(inputStream);
+		        	clickerClip.open(inputStream);
 				} catch (LineUnavailableException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-		        clip.start();
+		        clickerClip.loop(clickerClip.LOOP_CONTINUOUSLY);  
+		        mainMenuClip.stop();
+		        
+		        
 			}
 			else if (source.equals(active1Button)) {
 				if (user.removeClicks(active1.getCost())) {
@@ -711,6 +722,29 @@ public class ClickingGUI_v2 extends JFrame{
 					passive2Button.setVisible(false);
 					passive3Button.setVisible(false);
 					passive4Button.setVisible(false);
+					aliensClip = null;
+					try {
+						aliensClip = AudioSystem.getClip();
+					} catch (LineUnavailableException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+			        AudioInputStream inputStream = null;
+					try {
+						inputStream = AudioSystem.getAudioInputStream(
+						  new File("Aliens.wav"));
+					} catch (UnsupportedAudioFileException | IOException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+			        try {
+			        	aliensClip.open(inputStream);
+					} catch (LineUnavailableException | IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			        aliensClip.loop(aliensClip.LOOP_CONTINUOUSLY); 
+			        clickerClip.stop();
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "You do not have enough clicks.", "Invalid", JOptionPane.ERROR_MESSAGE);
