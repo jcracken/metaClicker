@@ -109,7 +109,7 @@ public class ClickingGUI_v2 extends JFrame{
 		topFrame = new JFrame("MetaClicker: The Clickening");
 		//this.setSize(800,600);
 		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		menuFrame.setLayout(new GridLayout(1,3));
+		menuFrame.setLayout(new GridLayout(2,1));
 		menuFrame.setSize(600, 800);
 		topFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		topFrame.setLayout(new GridLayout(1,3));
