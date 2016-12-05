@@ -9,11 +9,15 @@ import javax.sound.sampled.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.io.*;
+//import sun.audio.*;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class ClickingGUI_v2 extends JFrame{
 	
+	Clip mainMenuClip;
+	Clip clickerClip;
+	Clip aliensClip;
 	JFrame topFrame;
 	JFrame menuFrame;
 	
@@ -99,16 +103,14 @@ public class ClickingGUI_v2 extends JFrame{
 	ImagePanel passive5Image;
 	ImagePanel passive6Image;
 	
-	public ClickingGUI_v2() throws Exception {
-		
-		
+	public ClickingGUI_v2() throws Exception{
 		//super("MetaClicker: The Clickening");
 		menuFrame = new JFrame("MetaClicker: The Clickening");
 		topFrame = new JFrame("MetaClicker: The Clickening");
 		//this.setSize(800,600);
 		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		menuFrame.setLayout(new GridLayout(2,1));
-		menuFrame.setSize(300,300);
+		menuFrame.setLayout(new GridLayout(1,3));
+		menuFrame.setSize(600, 800);
 		topFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		topFrame.setLayout(new GridLayout(1,3));
 		topFrame.setSize(600, 800);
@@ -146,13 +148,16 @@ public class ClickingGUI_v2 extends JFrame{
 	}
 
 	public void buildMainMenu() throws Exception{
-		Clip clip = AudioSystem.getClip();
-        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-          new URL("https://raw.githubusercontent.com/jcracken/metaClicker/master/main_menu.wav"));
-        clip.open(inputStream);
-        clip.start(); 
 		
-		playGameButton = new JButton("Play Game");
+		mainMenuClip = AudioSystem.getClip();
+        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+        		new URL("https://raw.githubusercontent.com/jcracken/metaClicker/master/main_menu.wav"));
+        mainMenuClip.open(inputStream);
+        mainMenuClip.loop(mainMenuClip.LOOP_CONTINUOUSLY);
+        
+       // clip.close();
+		
+		playGameButton = new JButton("Start New Game");
 		clickLoad = new JButton("Load Game");
 		
 		playGameButton.addActionListener(new ButtonListener());
@@ -172,10 +177,10 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		menuFrame.add(playGameButton);
 		menuFrame.add(clickLoad);
+		
 	}
 	
-	public void buildGUI()  throws Exception{
-		
+	public void buildGUI() throws Exception{
 		// User
 		user = new Player_v2();
 		
@@ -247,7 +252,7 @@ public class ClickingGUI_v2 extends JFrame{
 		}
 		else
 			this.active1Panel.setVisible(false);
-		this.upgradePanel.add(active1Panel);
+		this.upgradePanel.add(this.active1Panel);
 		
 		this.passive1Panel = new JPanel(new BorderLayout());
 		this.passive1Panel.add(new JLabel(passive1.getName()), BorderLayout.WEST);
@@ -530,10 +535,10 @@ public class ClickingGUI_v2 extends JFrame{
 		
 	}
 	
-	private class ButtonListener implements ActionListener {
+	private class ButtonListener implements ActionListener{
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e){
 			JButton source = (JButton)(e.getSource());
 			
 			if (source.equals(clickMe))
@@ -547,10 +552,9 @@ public class ClickingGUI_v2 extends JFrame{
 			else if (source.equals(playGameButton)) {
 				menuFrame.setVisible(false);
 				topFrame.setVisible(true);
-				createUpgradePanels();
-				Clip clip = null;
+				clickerClip = null;
 				try {
-					clip = AudioSystem.getClip();
+					clickerClip = AudioSystem.getClip();
 				} catch (LineUnavailableException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -558,27 +562,28 @@ public class ClickingGUI_v2 extends JFrame{
 		        AudioInputStream inputStream = null;
 				try {
 					inputStream = AudioSystem.getAudioInputStream(
-					  new URL("https://github.com/jcracken/metaClicker/raw/master/Clicker.wav"));
+							new URL("https://github.com/jcracken/metaClicker/raw/master/Clicker.wav"));
 				} catch (UnsupportedAudioFileException | IOException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 		        try {
-					clip.open(inputStream);
+		        	clickerClip.open(inputStream);
 				} catch (LineUnavailableException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-		        clip.start();
+		        clickerClip.loop(clickerClip.LOOP_CONTINUOUSLY); 
+		        mainMenuClip.stop();
+
 			}
 			else if (source.equals(clickLoad)) {
 				user = Player_v2.loadGame();
 				menuFrame.setVisible(false);
 				topFrame.setVisible(true);
-				createUpgradePanels();
-				Clip clip = null;
+				clickerClip = null;
 				try {
-					clip = AudioSystem.getClip();
+					clickerClip = AudioSystem.getClip();
 				} catch (LineUnavailableException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -586,18 +591,21 @@ public class ClickingGUI_v2 extends JFrame{
 		        AudioInputStream inputStream = null;
 				try {
 					inputStream = AudioSystem.getAudioInputStream(
-					  new URL("https://github.com/jcracken/metaClicker/raw/master/Clicker.wav"));
+							new URL("https://github.com/jcracken/metaClicker/raw/master/Clicker.wav"));
 				} catch (UnsupportedAudioFileException | IOException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 		        try {
-					clip.open(inputStream);
+		        	clickerClip.open(inputStream);
 				} catch (LineUnavailableException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-		        clip.start();
+		        clickerClip.loop(clickerClip.LOOP_CONTINUOUSLY);  
+		        mainMenuClip.stop();
+		        
+		        
 			}
 			else if (source.equals(active1Button)) {
 				if (user.removeClicks(active1.getCost())) {
@@ -714,6 +722,29 @@ public class ClickingGUI_v2 extends JFrame{
 					passive2Button.setVisible(false);
 					passive3Button.setVisible(false);
 					passive4Button.setVisible(false);
+					aliensClip = null;
+					try {
+						aliensClip = AudioSystem.getClip();
+					} catch (LineUnavailableException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+			        AudioInputStream inputStream = null;
+					try {
+						inputStream = AudioSystem.getAudioInputStream(
+						  new File("Aliens.wav"));
+					} catch (UnsupportedAudioFileException | IOException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+			        try {
+			        	aliensClip.open(inputStream);
+					} catch (LineUnavailableException | IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			        aliensClip.loop(aliensClip.LOOP_CONTINUOUSLY); 
+			        clickerClip.stop();
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "You do not have enough clicks.", "Invalid", JOptionPane.ERROR_MESSAGE);
