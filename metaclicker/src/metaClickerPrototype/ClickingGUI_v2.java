@@ -18,90 +18,90 @@ public class ClickingGUI_v2 extends JFrame{
 	Clip mainMenuClip;
 	Clip clickerClip;
 	Clip aliensClip;
-	private JFrame topFrame;
-	private JFrame menuFrame;
+	JFrame topFrame;
+	JFrame menuFrame;
 	
-	private JPanel playGamePanel;
-	private JButton playGameButton;
-	private JPanel loadGamePanel;
-	private JButton loadGameButton;
+	JPanel playGamePanel;
+	JButton playGameButton;
+	JPanel loadGamePanel;
+	JButton loadGameButton;
 	
-	private JPanel clickArea;
-	private JPanel statisticArea;
-	private JPanel upgradeArea;
-	private Player_v2 user;
+	JPanel clickArea;
+	JPanel statisticArea;
+	JPanel upgradeArea;
+	Player_v2 user;
 	
-	private JScrollPane upgradeList;
-	private JPanel upgradePanel;
-	private JButton clickMe;
-	private JButton clickSave;
-	private JButton clickLoad;
-	private JTextArea statisticTextField;
+	JScrollPane upgradeList;
+	JPanel upgradePanel;
+	JButton clickMe;
+	JButton clickSave;
+	JButton clickLoad;
+	JTextArea statisticTextField;
 	
 	// Upgrades
-	private ActiveUpgrade_v2 active1;
-	private ActiveUpgrade_v2 active2;
-	private ActiveUpgrade_v2 active3;
-	private ActiveUpgrade_v2 active4;
-	private ActiveUpgrade_v2 active5;
-	private PassiveUpgrade_v2 passive1;
-	private PassiveUpgrade_v2 passive2;
-	private PassiveUpgrade_v2 passive3;
-	private PassiveUpgrade_v2 passive4;
-	private PassiveUpgrade_v2 passive5;
-	private PassiveUpgrade_v2 passive6;
+	ActiveUpgrade_v2 active1;
+	ActiveUpgrade_v2 active2;
+	ActiveUpgrade_v2 active3;
+	ActiveUpgrade_v2 active4;
+	ActiveUpgrade_v2 active5;
+	PassiveUpgrade_v2 passive1;
+	PassiveUpgrade_v2 passive2;
+	PassiveUpgrade_v2 passive3;
+	PassiveUpgrade_v2 passive4;
+	PassiveUpgrade_v2 passive5;
+	PassiveUpgrade_v2 passive6;
 	
 	// Upgrade panels
-	private JPanel active1Panel;
-	private JButton active1Button;
-	private JTextArea active1Desc;
-	private JPanel active2Panel;
-	private JButton active2Button;
-	private JTextArea active2Desc;
-	private JPanel active3Panel;
-	private JButton active3Button;
-	private JTextArea active3Desc;
-	private JPanel active4Panel;
-	private JButton active4Button;
-	private JTextArea active4Desc;
-	private JPanel active5Panel;
-	private JButton active5Button;
-	private JTextArea active5Desc;
-	private JPanel passive1Panel;
-	private JButton passive1Button;
-	private JTextArea passive1Desc;
-	private JPanel passive2Panel;
-	private JButton passive2Button;
-	private JTextArea passive2Desc;
-	private JPanel passive3Panel;
-	private JButton passive3Button;
-	private JTextArea passive3Desc;
-	private JPanel passive4Panel;
-	private JButton passive4Button;
-	private JTextArea passive4Desc;
-	private JPanel passive5Panel;
-	private JButton passive5Button;
-	private JTextArea passive5Desc;
-	private JPanel passive6Panel;
-	private JButton passive6Button;
-	private JTextArea passive6Desc;
+	JPanel active1Panel;
+	JButton active1Button;
+	JTextArea active1Desc;
+	JPanel active2Panel;
+	JButton active2Button;
+	JTextArea active2Desc;
+	JPanel active3Panel;
+	JButton active3Button;
+	JTextArea active3Desc;
+	JPanel active4Panel;
+	JButton active4Button;
+	JTextArea active4Desc;
+	JPanel active5Panel;
+	JButton active5Button;
+	JTextArea active5Desc;
+	JPanel passive1Panel;
+	JButton passive1Button;
+	JTextArea passive1Desc;
+	JPanel passive2Panel;
+	JButton passive2Button;
+	JTextArea passive2Desc;
+	JPanel passive3Panel;
+	JButton passive3Button;
+	JTextArea passive3Desc;
+	JPanel passive4Panel;
+	JButton passive4Button;
+	JTextArea passive4Desc;
+	JPanel passive5Panel;
+	JButton passive5Button;
+	JTextArea passive5Desc;
+	JPanel passive6Panel;
+	JButton passive6Button;
+	JTextArea passive6Desc;
 	
 	Timer timer = new Timer();
 	int endGame = 0;
 	boolean harambePls = false;   
 	
-	private ImagePanel active1Image;
-	private ImagePanel active2Image;
-	private ImagePanel active3Image;
-	private ImagePanel active4Image;
-	private ImagePanel active5Image;
+	ImagePanel active1Image;
+	ImagePanel active2Image;
+	ImagePanel active3Image;
+	ImagePanel active4Image;
+	ImagePanel active5Image;
 	
-	private ImagePanel passive1Image;
-	private ImagePanel passive2Image;
-	private ImagePanel passive3Image;
-	private ImagePanel passive4Image;
-	private ImagePanel passive5Image;
-	private ImagePanel passive6Image;
+	ImagePanel passive1Image;
+	ImagePanel passive2Image;
+	ImagePanel passive3Image;
+	ImagePanel passive4Image;
+	ImagePanel passive5Image;
+	ImagePanel passive6Image;
 	
 	public ClickingGUI_v2() throws Exception{
 		//super("MetaClicker: The Clickening");
@@ -130,8 +130,8 @@ public class ClickingGUI_v2 extends JFrame{
 				if(passive6.upgradePurchased)
 				{
 					if(user.getCounter() <= 0.0) {
-						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You idiot!", "Game Over", JOptionPane.ERROR_MESSAGE);
-						System.exit(0);
+						JOptionPane.showMessageDialog(null, "You lost the damn war and got exiled from space. Trump blew up Earth, so nowhere to go. You dumbass!", "Game Over", JOptionPane.ERROR_MESSAGE);
+						//end the game somehow
 					}
 					else
 						endGame++;
@@ -155,7 +155,7 @@ public class ClickingGUI_v2 extends JFrame{
         mainMenuClip.open(inputStream);
         mainMenuClip.loop(mainMenuClip.LOOP_CONTINUOUSLY);
         
-       // clip.close();//
+       // clip.close();
 		
 		playGameButton = new JButton("Start New Game");
 		clickLoad = new JButton("Load Game");
@@ -523,7 +523,7 @@ public class ClickingGUI_v2 extends JFrame{
 		
 		passive5 = new PassiveUpgrade_v2();
 		passive5.setCost(0);
-		passive5.setDesc("Harambe for the assist! Gives you an edge on those aliens who shot up your ride (Increases passive clicks to -1500).");
+		passive5.setDesc("Harambe for the assist! Gives you an edge on those alien bastards who shot up your ride (Increases passive clicks to -1500).");
 		passive5.setName("clicks out for Harambe"); //eleven
 		passive5.setCPS(-1500);
 		
@@ -544,6 +544,29 @@ public class ClickingGUI_v2 extends JFrame{
 			if (source.equals(clickMe))
 			{
 				user.click();
+//				Clip clip = null;
+//				try {
+//					clip = AudioSystem.getClip();
+//				} catch (LineUnavailableException e2) {
+//					// TODO Auto-generated catch block
+//					e2.printStackTrace();
+//				}
+//		        AudioInputStream inputStream = null;
+//				try {
+//					inputStream = AudioSystem.getAudioInputStream(
+//							new URL("https://raw.githubusercontent.com/jcracken/metaClicker/master/Pen%20Clicking-SoundBible.com-482574858.wav"));
+//				} catch (UnsupportedAudioFileException | IOException e2) {
+//					// TODO Auto-generated catch block
+//					e2.printStackTrace();
+//				}
+//		        try {
+//		        	clip.open(inputStream);
+//				} catch (LineUnavailableException | IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//		        clip.start();
+				
 			}
 			else if (source.equals(clickSave))
 			{
@@ -734,7 +757,7 @@ public class ClickingGUI_v2 extends JFrame{
 			        AudioInputStream inputStream = null;
 					try {
 						inputStream = AudioSystem.getAudioInputStream(
-						  new File("Aliens.wav"));
+						  new URL("https://github.com/jcracken/metaClicker/raw/master/Aliens.wav"));
 					} catch (UnsupportedAudioFileException | IOException e2) {
 						// TODO Auto-generated catch block
 						e2.printStackTrace();
